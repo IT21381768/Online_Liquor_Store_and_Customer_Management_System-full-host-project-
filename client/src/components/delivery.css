@@ -1,0 +1,168 @@
+body {
+	background-color: #FFF0CC;
+
+}
+
+.delivery-form {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 600px;
+	height: 800px;
+	margin-top: 250px;
+	padding: 50px 40px;
+	background: rgba(0, 0, 0, 0.4);
+}
+
+.delivery-form h2 {
+	margin: 0;
+	padding: 0 0 20px;
+	color: #fff;
+	text-align: center;
+	text-transform: uppercase;
+}
+
+.delivery-form p {
+	margin: 0;
+	padding: 0;
+	font-weight: bold;
+	color: #fff;
+}
+
+.delivery-form input {
+	width: 100%;
+	margin-bottom: 20px;
+}
+
+.delivery-form input {
+	border: none;
+	border-bottom: 1px solid #fff;
+	background: transparent;
+	outline: none;
+	height: 40px;
+	color: #fff;
+	font-size: 16px;
+}
+
+
+
+.delivery-form textarea {
+	border: none;
+	border-bottom: 1px solid #fff;
+	background: transparent;
+	outline: none;
+	height: 40px;
+	color: #fff;
+	font-size: 16px;
+}
+
+
+
+.head-title {
+	margin-left: 15px;
+	margin-top: 25px;
+}
+
+.head-title h1 {
+	font-size: 30px;
+	color: #000000;
+	font-weight: bold;
+}
+
+
+.col-md-6 {
+	margin-left: 100px;
+	background: rgba(0, 0, 0, 0.4);
+	font-weight: bold;
+}
+
+.card {
+	background: rgba(0, 0, 0, 0);
+	margin-top: 25px;
+}
+
+.card-header {
+	background: rgba(0, 0, 0, 0);
+}
+
+.list-group-item {
+	background: rgba(0, 0, 0, 0);
+}
+
+.btn-delivery-submit {
+	background-color: #080808;
+	color: #FFB400;
+	cursor: pointer;
+	font-weight: bold;
+	margin-right: 5px;
+}
+
+.delivery-form-display {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 600px;
+	height: 950px;
+	margin-top: 200px;
+	padding: 50px 40px;
+	background: rgba(0, 0, 0, 0.4);
+	margin-top: 250px;
+}
+
+
+.delivery-form-display h2 {
+	margin: 0;
+	padding: 0 0 20px;
+	color: #fff;
+	text-align: center;
+	text-transform: uppercase;
+}
+
+.delivery-form-display p {
+	margin: 0;
+	padding: 0;
+	font-weight: bold;
+	color: #fff;
+}
+
+.delivery-form-display input {
+	width: 100%;
+	margin-bottom: 20px;
+}
+
+.delivery-form-display input {
+	border: none;
+	border-bottom: 1px solid #fff;
+	background: transparent;
+	outline: none;
+	height: 40px;
+	color: #fff;
+	font-size: 16px;
+}
+
+
+
+.delivery-form-display textarea {
+	border: none;
+	border-bottom: 1px solid #fff;
+	background: transparent;
+	outline: none;
+	height: 40px;
+	color: #fff;
+	font-size: 16px;
+}
+
+.btn-dilivery-edit {
+	background-color: #080808;
+	color: #FFB400;
+	cursor: pointer;
+	font-weight: bold;
+	margin-right: 5px;
+}
+
+.blue-button {
+	background-color: rgb(2, 2, 2);
+  }
+  
