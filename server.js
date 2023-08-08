@@ -143,7 +143,7 @@ app.post("/login", (req, res) => {
  
   //register
   app.post('/register', (req, res) => {
-    const { email, password } = req.body;
+    const { name, email, password } = req.body;
   
     // Check if an employee with the provided email already exists
     EmployeeModel.findOne({ email: email })
@@ -151,7 +151,7 @@ app.post("/login", (req, res) => {
         if (existingEmployee) {
           res.status(400).json("Email is already in use");
         } else {
-          EmployeeModel.create({ email: email, password: password })
+          EmployeeModel.create({ name:name, email: email, password: password })
             .then(employee => res.json(employee))
             .catch(err => {
               console.error('Error during registration:', err);

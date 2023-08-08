@@ -1,26 +1,12 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import Swal from 'sweetalert2';
 
 function Login() {
     const [email, setEmail] = useState()
     const [password, setPassword] = useState()
     const navigate = useNavigate()
-
-    // const handleSubmit = (e) => {
-    //     e.preventDefault()
-    //     axios.post("http://localhost:3001/login", { email, password })
-    //         .then(result => {
-    //             console.log(result)
-    //             // navigate("/home")
-    //             if(result.data === "Success"){
-    //             navigate("/home")
-    //             }
-    //         })
-    //         .catch(err => console.log(err))
-    // }
-
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -28,11 +14,47 @@ function Login() {
             .then(result => {
                 console.log(result);
                 if (result.data === "Login Success") {
+                    Swal.fire({
+                        title: 'Login Success!',
+                        icon: 'success',
+                        confirmButtonColor: '#3085d6',
+                        confirmButtonText: 'OK'
+                    }).then(() => {
+                        this.setState({
+                            name: "",
+                            email: "",
+                            message: ""
+                        });
+                    });
                     navigate("/home");
                 } else if (result.data === "Password didn't match") {
                     console.log("Password is incorrect");
+                    Swal.fire({
+                        title: 'Password is incorrect',
+                        icon: 'warning',
+                        confirmButtonColor: '#d33',
+                        confirmButtonText: 'OK'
+                    }).then(() => {
+                        this.setState({
+                            name: "",
+                            email: "",
+                            message: ""
+                        });
+                    });
                 } else if (result.data === "User not registered") {
                     console.log("User is not registered");
+                    Swal.fire({
+                        title: 'User is not registered',
+                        icon: 'warning',
+                        confirmButtonColor: '#d33',
+                        confirmButtonText: 'OK'
+                    }).then(() => {
+                        this.setState({
+                            name: "",
+                            email: "",
+                            message: ""
+                        });
+                    });
                 }
             })
             .catch(err => console.log(err));
@@ -40,38 +62,37 @@ function Login() {
 
 
     return (
-        <div>
-            <h1>Login</h1>
-            <form onSubmit={handleSubmit}>
+        <div className="container">
 
+            <form className="create" onSubmit={handleSubmit}>
+                <h3>User Login</h3>
 
-                <div className="mb-3">
-                    <label htmlFor="email">
-                        <strong>Email</strong>
-                    </label>
-                    <input type="email"
-                        className="form-control"
-                        autoComplete="off"
-                        name="email"
-                        placeholder="Enter your email"
-                        onChange={(e) => setEmail(e.target.value)} />
-                </div>
+                <label>
+                    Email
+                </label>
+                <input type="email"
+                    autoComplete="off"
+                    name="email"
+                    placeholder="Enter your email"
+                    onChange={(e) => setEmail(e.target.value)}
+                    required />
 
-                <div className="mb-3">
-                    <label htmlFor="email">
-                        <strong>Password</strong>
-                    </label>
-                    <input type="password"
-                        className="form-control"
-                        autoComplete="off"
-                        name="password"
-                        placeholder="Enter your password"
-                        onChange={(e) => setPassword(e.target.value)} />
-                </div>
+                <label >
+                    Password
+                </label>
+                <input
+                    type="password"
+                    autoComplete="off"
+                    name="password"
+                    placeholder="Enter your password"
+                    onChange={(e) => setPassword(e.target.value)}
+                    required />
 
-                <button type="submit" className="btn btn-primary">
-                    Login
-                </button>
+                <center>
+                    <button type="submit" className="formBtn">
+                        Login
+                    </button>
+                </center>
             </form>
         </div>
     )

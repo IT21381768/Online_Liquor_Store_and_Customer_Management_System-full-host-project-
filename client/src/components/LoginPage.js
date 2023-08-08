@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './form.css';
 import axios from 'axios';
-import Swal from 'sweetalert2';
 
 
 class LoginPage extends Component {
