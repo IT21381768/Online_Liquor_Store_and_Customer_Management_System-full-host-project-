@@ -1,7 +1,7 @@
 import React, { useState, Component } from 'react'
 import './form.css'
 import axios from 'axios';
-
+import NavBar from './NavBar';
 
 
 export default class AddEmployee extends Component {
@@ -77,6 +77,7 @@ export default class AddEmployee extends Component {
   render() {
     return (
       <div className='container'>
+         <NavBar />
         <a href="/EmployeeList"><button className='backBtn'>Employee List</button></a>
 
         <form className="create" onSubmit={this.onSubmit}>

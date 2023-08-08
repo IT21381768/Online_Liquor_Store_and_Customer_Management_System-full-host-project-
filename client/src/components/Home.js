@@ -1,11 +1,11 @@
 import React from 'react'
-
+import NavBar from './NavBar'
 
 export default function Home() {
   return (
 
     <div>
-
+      <NavBar />
       <section>
         <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
           <div class="carousel-indicators">
@@ -124,22 +124,22 @@ export default function Home() {
       </section>
 
       <div>
-      
-            <div class="nav1">
-            
-              
-               
-                <div class="text-center p-3" >
-                    
-                  
-                  
-                </div>
-                
-             
-            
-            </div>
-            
-                    </div>
+
+        <div class="nav1">
+
+
+
+          <div class="text-center p-3" >
+
+
+
+          </div>
+
+
+
+        </div>
+
+      </div>
 
 
       <div class="nav1">
