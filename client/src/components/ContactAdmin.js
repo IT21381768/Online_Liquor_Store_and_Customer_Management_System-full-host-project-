@@ -4,6 +4,7 @@ import { useParams, useLocation } from "react-router-dom";
 import { jsPDF } from "jspdf";
 import "jspdf-autotable";
 import Swal from 'sweetalert2';
+import NavBar from './NavBar';
 
 function withParams(Component) {
     return props => <Component params={
@@ -40,7 +41,7 @@ class AdminDelivery extends Component {
         });
     }
 
-    
+
 
     // edit
     handleChange = (e) => {
@@ -54,46 +55,35 @@ class AdminDelivery extends Component {
     }
 
     onSave = (id) => {
-    let data = this.state.posts.filter((post) => post._id === id)[0];
-    data.note = this.note;
+        let data = this.state.posts.filter((post) => post._id === id)[0];
+        data.note = this.note;
 
-    axios.put(`/contactAdmin/post/${id}`, data).then((res) => {
-        if (res.data.success) {
+        axios.put(`/contactAdmin/post/${id}`, data).then((res) => {
+            if (res.data.success) {
+                Swal.fire({
+                    title: 'Updated Successfully!',
+                    text: 'Your changes have been saved.',
+                    icon: 'success',
+                    confirmButtonColor: '#3085d6',
+                    confirmButtonText: 'OK'
+                }).then(() => {
+                    this.setState({
+                        name: "",
+                        email: "",
+                        message: ""
+                    });
+                });
+            }
+        }).catch((error) => {
             Swal.fire({
-                title: 'Updated Successfully!',
-                text: 'Your changes have been saved.',
-                icon: 'success',
+                title: 'Error!',
+                text: 'An error occurred while updating the post. Please try again later.',
+                icon: 'error',
                 confirmButtonColor: '#3085d6',
                 confirmButtonText: 'OK'
-            }).then(() => {
-                this.setState({
-                    name: "",
-                    email: "",
-                    message: ""
-                });
             });
-        }
-    }).catch((error) => {
-        Swal.fire({
-            title: 'Error!',
-            text: 'An error occurred while updating the post. Please try again later.',
-            icon: 'error',
-            confirmButtonColor: '#3085d6',
-            confirmButtonText: 'OK'
         });
-    });
-};
-
-
-    //delete
-    // onDelete = (id) => {
-    //     if (window.confirm("Are you sure you want to delete this?")) {
-    //         axios.delete(`/contactAdmin/post/${id}`).then((res) => {
-    //             alert("Delete Successfully");
-    //             this.retrievePosts();
-    //         });
-    //     }
-    // };
+    };
 
     onDelete = (id) => {
         Swal.fire({
@@ -116,10 +106,10 @@ class AdminDelivery extends Component {
             }
         });
     };
-    
 
 
-   
+
+
 
     //print
     handlePrint = () => {
@@ -151,13 +141,14 @@ class AdminDelivery extends Component {
     render() {
         const { searchKey } = this.state;
         const filteredDelivery = this.state.posts.filter((posts) =>
-        posts.name.toLowerCase().includes(searchKey.toLowerCase())
+            posts.name.toLowerCase().includes(searchKey.toLowerCase())
         );
         return (
             <div>
+                <NavBar />
                 <div className='mt-5'>
                     <div className="container">
-                    <a href="/adminDashboard"><button className='backBtn'>Back to Dashboard</button></a>
+                        <a href="/adminDashboard"><button className='backBtn'>Back to Dashboard</button></a>
                         <a href="/printContactPreview"><button className='backBtn'>Save as PDF</button></a>
                         <form className="form-inline my-2 my-lg-9 ml-auto">
                             <input
