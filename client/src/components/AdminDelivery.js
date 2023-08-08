@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { useParams, useLocation } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { jsPDF } from "jspdf";
 import "jspdf-autotable";
 import Swal from 'sweetalert2';
+import NavBar from './NavBar';
 
 function withParams(Component) {
     return props => <Component params={
@@ -41,7 +42,7 @@ class AdminDelivery extends Component {
     }
 
 
-    
+
     // edit
     handleChange = (e) => {
         const { name, value } = e.target;
@@ -54,81 +55,40 @@ class AdminDelivery extends Component {
     }
 
     onSave = (id) => {
-    let data = this.state.details.filter((post) => post._id === id)[0];
-    data.status = this.status;
+        let data = this.state.details.filter((post) => post._id === id)[0];
+        data.status = this.status;
 
-    axios.put(`/informationForm/post/${id}`, data).then((res) => {
-        if (res.data.success) {
+        axios.put(`/informationForm/post/${id}`, data).then((res) => {
+            if (res.data.success) {
+                Swal.fire({
+                    title: 'Updated Successfully!',
+                    text: 'Your changes have been saved.',
+                    icon: 'success',
+                    confirmButtonColor: '#3085d6',
+                    confirmButtonText: 'OK'
+                }).then(() => {
+                    this.setState({
+                        name: "",
+                        email: "",
+                        message: "",
+                        address: "",
+                        town: "",
+                        phone: ""
+                    });
+                });
+            }
+        }).catch((error) => {
             Swal.fire({
-                title: 'Updated Successfully!',
-                text: 'Your changes have been saved.',
-                icon: 'success',
+                title: 'Error!',
+                text: 'An error occurred while updating the post. Please try again later.',
+                icon: 'error',
                 confirmButtonColor: '#3085d6',
                 confirmButtonText: 'OK'
-            }).then(() => {
-                this.setState({
-                    name: "",
-                                    email: "",
-                                    message: "",
-                                    address: "",
-                                    town: "",
-                                    phone: ""
-                });
             });
-        }
-    }).catch((error) => {
-        Swal.fire({
-            title: 'Error!',
-            text: 'An error occurred while updating the post. Please try again later.',
-            icon: 'error',
-            confirmButtonColor: '#3085d6',
-            confirmButtonText: 'OK'
         });
-    });
-};
-    // handleChange = (e) => {
-    //     const { name, value } = e.target;
+    };
 
-    //     this.setState({
-    //         ...this.state,
-    //         [name]: value
-    //     });
-    //     this.status = value;
-    // }
-
-    // onSave = (id) => {
-    //     let data = this.state.details.filter((post) => post._id === id)[0];
-    //     data.status = this.status;
-
-    //     axios.put(`/informationForm/post/${id}`, data).then((res) => {
-    //         if (res.data.success) {
-    //             console.log(res.data.success._id);
-    //             alert("Updated Successfully");
-    //             var id = res.data.success._id
-
-    //             this.setState({
-    //                 name: "",
-    //                 email: "",
-    //                 message: "",
-    //                 address: "",
-    //                 town: "",
-    //                 phone: ""
-    //             })
-    //         }
-    //     })
-    // }
-
-    
-    // onDelete = (id) => {
-    //     if (window.confirm("Are you sure you want to delete this?")) {
-    //         axios.delete(`/informationForm/post/${id}`).then((res) => {
-    //             alert("Delete Successfully");
-    //             this.retrievePosts();
-    //         });
-    //     }
-    // };
-
-//delete
+    //delete
     onDelete = (id) => {
         Swal.fire({
             title: 'Are you sure you want to delete this?',
@@ -184,10 +144,11 @@ class AdminDelivery extends Component {
             details.name.toLowerCase().includes(searchKey.toLowerCase())
         );
 
-        
-        
+
+
         return (
             <div>
+                <NavBar />
                 <div className='mt-5'>
                     <div className="container">
                         <a href="/adminDashboard"><button className='backBtn'>Back to Dashboard</button></a>
@@ -249,7 +210,7 @@ class AdminDelivery extends Component {
                                                     placeholder={
                                                         details.status
                                                     } /></td>
- {/* <td>
+                                            {/* <td>
   <select
     className="form-control"
     value={this.state.status}

@@ -3,13 +3,10 @@ import React, { Component } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Contact from './components/Contact';
 import ContactDisplay from './components/ContactDisplay';
-import NavBar from './components/NavBar';
 import Home from './components/Home';
-import Footer from './components/Footer';
 import InformationForm from './components/InformationForm';
 import DisplayInfo from './components/DisplayInfo';
 import Spirits from './components/categories/spirits';
-import Category_details from './components/categories/category_details';
 import CartPage from './components/cartPage';
 import AdminDelivery from './components/AdminDelivery';
 import ContactAdmin from './components/ContactAdmin';
@@ -84,7 +81,6 @@ export default class App extends Component {
 
 
             <Route path="/spirits" exact element={<Spirits />} />
-            <Route path="/categoryDetails" exact element={<Category_details />} />
             <Route path="/cartPage" exact element={<CartPage />} />
 
             <Route path="/admindelivery" exact element={<AdminDelivery />} />

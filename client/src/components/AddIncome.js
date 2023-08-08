@@ -1,7 +1,7 @@
-import React, {useState,Component} from 'react'
+import React, { Component } from 'react'
 import './form.css'
 import axios from 'axios';
-
+import NavBar from './NavBar';
 
 //const AddSupplier = () => {
 export default class AddIncome extends Component {
@@ -14,7 +14,7 @@ export default class AddIncome extends Component {
             remarks: '',
             amount: '',
             status: '',
-            
+
         }
     }
 
@@ -55,7 +55,7 @@ export default class AddIncome extends Component {
                         category: "",
                         remarks: "",
                         amount: "",
-                        status:""
+                        status: ""
                     }
                 )
             }
@@ -63,55 +63,59 @@ export default class AddIncome extends Component {
 
     }
 
- render(){
-    return (
-        <div className='container'>
-            <a href="/IncomeList"><button className='backBtn'>Income List</button></a>
-            
-            <form className="create" onSubmit={this.onSubmit}>
-  <h3>Add Income Details</h3>
+    render() {
+        return (
+            <div>
+                <NavBar />
 
-  {/* <label>Date: </label>
+                <div className='container'>
+                    <a href="/IncomeList"><button className='backBtn'>Income List</button></a>
+
+                    <form className="create" onSubmit={this.onSubmit}>
+                        <h3>Add Income Details</h3>
+
+                        {/* <label>Date: </label>
   <input type="date" name="date" value={this.state.date} onChange={this.handleChange} id="formGroupExampleInput" required max={new Date().toISOString().split("T")[0]} /> */}
 
 
-<label>Date:</label>
-<input
-  type="date"
-  name="date"
-  value={this.state.date}
-  onChange={this.handleChange}
-  id="formGroupExampleInput"
-  required
-  min={new Date().toISOString().split("T")[0]}
-  max={new Date().toISOString().split("T")[0]}
-/>
+                        <label>Date:</label>
+                        <input
+                            type="date"
+                            name="date"
+                            value={this.state.date}
+                            onChange={this.handleChange}
+                            id="formGroupExampleInput"
+                            required
+                            min={new Date().toISOString().split("T")[0]}
+                            max={new Date().toISOString().split("T")[0]}
+                        />
 
-  <label>Category: </label>
-  <input type="text" name="category" value={this.state.category}
-         onChange={this.handleChange} maxLength="50" required />
+                        <label>Category: </label>
+                        <input type="text" name="category" value={this.state.category}
+                            onChange={this.handleChange} maxLength="50" required />
 
-  <label>Remarks: </label>
-  <textarea name="remarks" value={this.state.remarks}
-            onChange={this.handleChange} maxLength="200" />
+                        <label>Remarks: </label>
+                        <textarea name="remarks" value={this.state.remarks}
+                            onChange={this.handleChange} maxLength="200" />
 
-  <label>Amount(LKR): </label>
-  <input type="number" name="amount" value={this.state.amount}
-         onChange={this.handleChange} min="0" required />
+                        <label>Amount(LKR): </label>
+                        <input type="number" name="amount" value={this.state.amount}
+                            onChange={this.handleChange} min="0" required />
 
-  <label>Status: </label>
-  <input type="text" name="status" value={this.state.status}
-         onChange={this.handleChange} maxLength="50" required />
+                        <label>Status: </label>
+                        <input type="text" name="status" value={this.state.status}
+                            onChange={this.handleChange} maxLength="50" required />
 
-  <center>
-    <button className='formBtn' type="submit">Save</button>
-  </center>
-</form>
+                        <center>
+                            <button className='formBtn' type="submit">Save</button>
+                        </center>
+                    </form>
 
-        </div>
-    )
+                </div>
+            </div>
+        )
+    }
+
 }
 
- }
-   
 

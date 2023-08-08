@@ -70,17 +70,17 @@ export default class App extends Component {
             <Route path="/" exact element={<Home />} />
             <Route path="/contactdisplay/:id" exact element={<ContactDisplay />} />
             <Route path="/contact" exact element={<Contact />} />
-          
-   
-          <Route path="/informationForm" exact element={<InformationForm />} />
-          <Route path="/DisplayInfo/:id" exact element={<DisplayInfo />} />
 
-  
-          <Route path="/adminDashboard" exact element={<AdminDashboard />} />
 
-          
+            <Route path="/informationForm" exact element={<InformationForm />} />
+            <Route path="/DisplayInfo/:id" exact element={<DisplayInfo />} />
 
-         <Route path="/spirits" exact element={<Spirits />} />
+
+            <Route path="/adminDashboard" exact element={<AdminDashboard />} />
+
+
+
+            <Route path="/spirits" exact element={<Spirits />} />
             <Route path="/categoryDetails" exact element={<Category_details />} />
             <Route path="/cartPage" exact element={<CartPage />} />
 
@@ -92,22 +92,22 @@ export default class App extends Component {
 
             <Route path="/contactAdmin" exact element={<ContactAdmin />} />
 
-            
-
-            <Route path="/EmployeeList" exact element={<EmployeeList/>}/>
-          <Route path="/AddEmployee" exact element={<AddEmployee/>}/>
-          <Route path="/EditEmployee/:id" exact element={<EditEmployee/>}/>
-          <Route path="/EmployeePreview" exact element={<EmployeePreview/>}/>
-
-          <Route path="/EmpLoginPage" exact element={<EmpLoginPage/>}/>
-          <Route path="/EmpWelcome" exact element={<EmpWelcome/>}/>
 
 
-          <Route path="/Leave" exact element={<Leave/>}/>
-          <Route path="/LeaveAdmin" exact element={<LeaveAdmin/>}/>
-          <Route path="/LeaveDisplay" exact element={<LeaveDisplay/>}/>
+            <Route path="/EmployeeList" exact element={<EmployeeList />} />
+            <Route path="/AddEmployee" exact element={<AddEmployee />} />
+            <Route path="/EditEmployee/:id" exact element={<EditEmployee />} />
+            <Route path="/EmployeePreview" exact element={<EmployeePreview />} />
 
-          <Route path="/SupplierList" exact element={<SupplierList />} />
+            <Route path="/EmpLoginPage" exact element={<EmpLoginPage />} />
+            <Route path="/EmpWelcome" exact element={<EmpWelcome />} />
+
+
+            <Route path="/Leave" exact element={<Leave />} />
+            <Route path="/LeaveAdmin" exact element={<LeaveAdmin />} />
+            <Route path="/LeaveDisplay" exact element={<LeaveDisplay />} />
+
+            <Route path="/SupplierList" exact element={<SupplierList />} />
             <Route path="/AddSupplier" exact element={<AddSupplier />} />
             <Route path="/EditSupplier/:id" exact element={<EditSupplier />} />
             <Route path="/OrderList" exact element={<OrderList />} />
@@ -117,45 +117,45 @@ export default class App extends Component {
             <Route path="/OrderList" exact element={<OrderList />} />
             <Route path="/PrintPreviewOrder" exact element={<PrintPreviewOrder />} />
 
-            <Route path="/SalesList" exact element={<SalesList/>}/>
-          <Route path="/AddSalesD" exact element={<AddSalesD/>}/>
-         <Route path="/EditSalesD/:id" exact element={<EditSalesD/>}/>
-         <Route path="/PrintPreviewSales" exact element={<PrintPreviewSales/>}/>
+            <Route path="/SalesList" exact element={<SalesList />} />
+            <Route path="/AddSalesD" exact element={<AddSalesD />} />
+            <Route path="/EditSalesD/:id" exact element={<EditSalesD />} />
+            <Route path="/PrintPreviewSales" exact element={<PrintPreviewSales />} />
 
-         <Route path="/inventory" exact element={<Inventory />} />
-          <Route path="/inventoryDetail" exact element={<InventoryDetail />} />
-          <Route path="/addProduct" exact element={<AddProduct />} />
-          <Route path="/adminDashboard" exact element={<AdminDashboard />} />
-          <Route path="/editInventory/:id" exact element={<EditInventory />} />
-          <Route path="/printPreviewInventory" exact element={<PrintPreviewInventory />} />
-          <Route path="/LoginPage" exact element={<LoginPage />} />
+            <Route path="/inventory" exact element={<Inventory />} />
+            <Route path="/inventoryDetail" exact element={<InventoryDetail />} />
+            <Route path="/addProduct" exact element={<AddProduct />} />
+            <Route path="/adminDashboard" exact element={<AdminDashboard />} />
+            <Route path="/editInventory/:id" exact element={<EditInventory />} />
+            <Route path="/printPreviewInventory" exact element={<PrintPreviewInventory />} />
+            <Route path="/LoginPage" exact element={<LoginPage />} />
 
-          <Route path="/AddIncome" exact element={<AddIncome/>}/>
-          <Route path="/IncomeList" exact element={<IncomeList/>}/>
-          <Route path="/EditIncome/:id" exact element={<EditIncome/>}/>
-          <Route path="/pieChart" exact element={<PieChart/>}/>
+            <Route path="/AddIncome" exact element={<AddIncome />} />
+            <Route path="/IncomeList" exact element={<IncomeList />} />
+            <Route path="/EditIncome/:id" exact element={<EditIncome />} />
+            <Route path="/pieChart" exact element={<PieChart />} />
 
 
-          <Route path="/AddExpense" exact element={<AddExpense/>}/>
-          <Route path="/ExpenseList" exact element={<ExpenseList/>}/>
-          <Route path="/EditExpense/:id" exact element={<EditExpense/>}/>
-          
-          <Route path="/PrintPreviewIncome" exact element={<PrintPreviewIncome/>}/>
+            <Route path="/AddExpense" exact element={<AddExpense />} />
+            <Route path="/ExpenseList" exact element={<ExpenseList />} />
+            <Route path="/EditExpense/:id" exact element={<EditExpense />} />
 
-          <Route path="/PrintPreviewExpense" exact element={<PrintPreviewExpense/>}/>
+            <Route path="/PrintPreviewIncome" exact element={<PrintPreviewIncome />} />
 
-          <Route path="/OfferList" exact element={<OfferList/>}/>
-          <Route path="/AddOffer" exact element={<AddOffer/>}/>
-         <Route path="/EditOffer/:id" exact element={<EditOffer/>}/>
-         <Route path="/PrintPreviewOrder" exact element={<PrintPreviewOffer />} />
+            <Route path="/PrintPreviewExpense" exact element={<PrintPreviewExpense />} />
 
-         
+            <Route path="/OfferList" exact element={<OfferList />} />
+            <Route path="/AddOffer" exact element={<AddOffer />} />
+            <Route path="/EditOffer/:id" exact element={<EditOffer />} />
+            <Route path="/PrintPreviewOrder" exact element={<PrintPreviewOffer />} />
 
-        
-          
+
+
+
+
           </Routes>
           {/* <Footer />  */}
-          
+
         </div>
       </BrowserRouter>
     )

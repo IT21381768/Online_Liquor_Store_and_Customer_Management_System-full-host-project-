@@ -1,7 +1,7 @@
 import React, { useState, Component } from 'react'
 import './form.css'
 import axios from 'axios';
-
+import NavBar from './NavBar';
 
 
 export default class AddOrder extends Component {
@@ -81,36 +81,40 @@ export default class AddOrder extends Component {
 
     render() {
         return (
-            <div className='container'>
-                <a href="/adminDashboard"><button className='backBtn'>Back to Dashboard</button></a>
-                <a href="/OrderList"><button className='backBtn'>Order List</button></a>
+            <div>
+                <NavBar />
 
-                <form className="create" onSubmit={this.onSubmit}>
-                    <h3>Add New Order</h3>
+                <div className='container'>
+                    <a href="/adminDashboard"><button className='backBtn'>Back to Dashboard</button></a>
+                    <a href="/OrderList"><button className='backBtn'>Order List</button></a>
 
-                    <label>Supplier Company Name: </label>
-                    <input type="text" name="snname" value={this.state.snname} onChange={this.handleChange} id="formGroupExampleInput" required />
+                    <form className="create" onSubmit={this.onSubmit}>
+                        <h3>Add New Order</h3>
 
-                    <label>Supplier Name: </label>
-                    <input type="text" name="sname" value={this.state.sname} onChange={this.handleChange} id="formGroupExampleInput" required />
+                        <label>Supplier Company Name: </label>
+                        <input type="text" name="snname" value={this.state.snname} onChange={this.handleChange} id="formGroupExampleInput" required />
 
-                    <label>Date: </label>
-                    <input type="date" name="date" value={this.state.date} onChange={this.handleChange} id="formGroupExampleInput" required max={new Date().toISOString().split("T")[0]} />
+                        <label>Supplier Name: </label>
+                        <input type="text" name="sname" value={this.state.sname} onChange={this.handleChange} id="formGroupExampleInput" required />
 
-                    <label>Product Name: </label>
-                    <input type="text" name="pname" value={this.state.pname} onChange={this.handleChange} id="formGroupExampleInput" required />
+                        <label>Date: </label>
+                        <input type="date" name="date" value={this.state.date} onChange={this.handleChange} id="formGroupExampleInput" required max={new Date().toISOString().split("T")[0]} />
 
-                    <label>Quantity: </label>
-                    <input type="number" name="quantity" value={this.state.quantity} onChange={this.handleChange} id="formGroupExampleInput" required min={1} />
+                        <label>Product Name: </label>
+                        <input type="text" name="pname" value={this.state.pname} onChange={this.handleChange} id="formGroupExampleInput" required />
 
-                    <label>Unit Price(LKR): </label>
-                    <input type="number" name="unitprice" value={this.state.unitprice} onChange={this.handleChange} id="formGroupExampleInput" required min={0.01} step={0.01} />
+                        <label>Quantity: </label>
+                        <input type="number" name="quantity" value={this.state.quantity} onChange={this.handleChange} id="formGroupExampleInput" required min={1} />
 
-                    <label>Status: </label>
-                    <input type="text" name="status" value={this.state.status} onChange={this.handleChange} id="formGroupExampleInput" required />
+                        <label>Unit Price(LKR): </label>
+                        <input type="number" name="unitprice" value={this.state.unitprice} onChange={this.handleChange} id="formGroupExampleInput" required min={0.01} step={0.01} />
 
-                    <center><button className='formBtn' type="submit">Add Order</button></center>
-                </form>
+                        <label>Status: </label>
+                        <input type="text" name="status" value={this.state.status} onChange={this.handleChange} id="formGroupExampleInput" required />
+
+                        <center><button className='formBtn' type="submit">Add Order</button></center>
+                    </form>
+                </div>
             </div>
         )
     }

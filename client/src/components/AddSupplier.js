@@ -1,7 +1,7 @@
-import React, { useState, Component } from 'react'
+import React, { Component } from 'react'
 import './form.css'
 import axios from 'axios';
-
+import NavBar from './NavBar';
 
 //const AddSupplier = () => {
 export default class AddSupplier extends Component {
@@ -72,39 +72,42 @@ export default class AddSupplier extends Component {
 
     render() {
         return (
-            <div className='container'>
-                <a href="/adminDashboard"><button className='backBtn'> Dashboard</button></a>
-                <a href="/SupplierList"><button className='backBtn'>Supplier List</button></a>
+            <div>
+                <NavBar />
+                <div className='container'>
+                    <a href="/adminDashboard"><button className='backBtn'> Dashboard</button></a>
+                    <a href="/SupplierList"><button className='backBtn'>Supplier List</button></a>
 
-                <form className="create" onSubmit={this.onSubmit}>
-                    <h3>Add New Supplier</h3>
+                    <form className="create" onSubmit={this.onSubmit}>
+                        <h3>Add New Supplier</h3>
 
-                    <label>Supplier Company Name: </label>
-                    <input type="text" name="snname" value={this.state.snname} onChange={this.handleChange} required />
+                        <label>Supplier Company Name: </label>
+                        <input type="text" name="snname" value={this.state.snname} onChange={this.handleChange} required />
 
-                    <label>Supplier Name: </label>
-                    <input type="text" name="sname" value={this.state.sname} onChange={this.handleChange} required />
+                        <label>Supplier Name: </label>
+                        <input type="text" name="sname" value={this.state.sname} onChange={this.handleChange} required />
 
-                    <label>Address: </label>
-                    <input type="text" name="address" value={this.state.address} onChange={this.handleChange} required />
+                        <label>Address: </label>
+                        <input type="text" name="address" value={this.state.address} onChange={this.handleChange} required />
 
-                    <label>Email: </label>
-                    <input type="email" name="email" value={this.state.email} onChange={this.handleChange} required />
+                        <label>Email: </label>
+                        <input type="email" name="email" value={this.state.email} onChange={this.handleChange} required />
 
-                    <label>Website: </label>
-                    <input type="url" name="website" value={this.state.website} onChange={this.handleChange} required />
+                        <label>Website: </label>
+                        <input type="url" name="website" value={this.state.website} onChange={this.handleChange} required />
 
-                    <label>Phone: </label>
-                    <input type="tel" name="phone" value={this.state.phone} onChange={this.handleChange} required pattern="[0-9]{10}" title="Please enter a valid 10 digit phone number" />
+                        <label>Phone: </label>
+                        <input type="tel" name="phone" value={this.state.phone} onChange={this.handleChange} required pattern="[0-9]{10}" title="Please enter a valid 10 digit phone number" />
 
-                    <label>Status: </label>
-                    <input type="text" name="status" value={this.state.status} onChange={this.handleChange} required />
+                        <label>Status: </label>
+                        <input type="text" name="status" value={this.state.status} onChange={this.handleChange} required />
 
-                    <center>
-                        <button className='formBtn' type="submit">Add Supplier</button>
-                    </center>
-                </form>
+                        <center>
+                            <button className='formBtn' type="submit">Add Supplier</button>
+                        </center>
+                    </form>
 
+                </div>
             </div>
         )
     }

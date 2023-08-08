@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from 'axios';
 import "./contact.css"
+import NavBar from './NavBar';
 
 export default class Contact extends Component {
 
@@ -61,8 +62,7 @@ export default class Contact extends Component {
     render() {
         return (
             <div >
-
-
+                <NavBar />
                 <section id="about" class="about section-padding">
                     <div class="container">
                         <div class="row">
