@@ -58,7 +58,8 @@ import AddIncome from './components/AddIncome';
 import PieChart from './components/pieChart';
 import LoginPage from './components/LoginPage';
 import Verification from './components/Verification';
-
+import Signup from './components/Signup';
+import Login from './components/Login';
 
 export default class App extends Component {
   render() {
@@ -151,6 +152,8 @@ export default class App extends Component {
             <Route path="/EditOffer/:id" exact element={<EditOffer />} />
             <Route path="/PrintPreviewOrder" exact element={<PrintPreviewOffer />} />
 
+            <Route path="/register" element={<Signup />} />
+            <Route path="/login" element={<Login />} />
 
 
 
