@@ -3,9 +3,7 @@ import axios from 'axios';
 import { useParams } from "react-router-dom";
 import { jsPDF } from "jspdf";
 import "jspdf-autotable";
-
-
-
+import NavBar from './NavBar';
 
 function withParams(Component) {
     return props => <Component params={
@@ -80,75 +78,76 @@ class PrintPreviewSupplier extends Component {
 
         return (
 
-
-            <div className='mt-5'>
-
-
-                <div className="container">
-                    <div className="add_btn mt-2 mb-2">
+            <div>
+                <NavBar />
+                <div className='mt-5'>
 
 
-                        <a href="/adminDashboard"><button className='backBtn'> Dashboard</button></a>
-                        <a href="/SupplierList"><button className='backBtn'>Supplier List</button></a>
-                        <button onClick={this.handlePrint} className='backBtn'>Save </button><br></br>
-                        <h2><b>Supreme Wine Stores</b></h2>
-                        <p>Address: Supreme Wine Stores, No10,Gamini Road, Galle</p>
-                        <p>Phone: 0915676543</p>
-                        <p>Email: supreme@gmail.com</p>
-
-                    </div>
-                    <h3>Supplier Detail List</h3>
+                    <div className="container">
+                        <div className="add_btn mt-2 mb-2">
 
 
-                    <div className="add_btn mt-2 mb-2">
+                            <a href="/adminDashboard"><button className='backBtn'> Dashboard</button></a>
+                            <a href="/SupplierList"><button className='backBtn'>Supplier List</button></a>
+                            <button onClick={this.handlePrint} className='backBtn'>Save </button><br></br>
+                            <h2><b>Supreme Wine Stores</b></h2>
+                            <p>Address: Supreme Wine Stores, No10,Gamini Road, Galle</p>
+                            <p>Phone: 0915676543</p>
+                            <p>Email: supreme@gmail.com</p>
 
-                        {/* <b>Total: {count}</b> */}
-                        {/* <div style={{ marginLeft: '1100px' }}> <h1><b>Total: </b></h1></div> */}
-
-
-                    </div>
-
-                    <div className="table-responsive">
-                        <table class="table" id="SupplierTable">
-                            <thead>
-                                <tr className="table-dark" >
-                                    <th scope="col" >ID</th>
-                                    <th scope="col" >Supplier Company Name</th>
-                                    <th scope="col">Supplier Name</th>
-                                    <th scope="col" >Phone</th>
-                                    <th scope="col" >Status</th>
+                        </div>
+                        <h3>Supplier Detail List</h3>
 
 
-                                </tr>
-                            </thead>
-                            <tbody> {
-                                this.state.supplier.map((supplier, index) => (
-                                    <tr key={index}>
+                        <div className="add_btn mt-2 mb-2">
 
-                                        <th scope="row">
-                                            {
-                                                index + 1
-                                            }</th>
-
-                                        <td> {
-                                            supplier.snname
-                                        }</td>
-
-                                        <td>{
-                                            supplier.sname
-                                        }</td>
-
-                                        <td>{
-                                            supplier.phone
-                                        }</td>
-
-                                        <td>{
-                                            supplier.status
-                                        }</td>
+                            {/* <b>Total: {count}</b> */}
+                            {/* <div style={{ marginLeft: '1100px' }}> <h1><b>Total: </b></h1></div> */}
 
 
+                        </div>
 
-                                        {/* <td onClick={
+                        <div className="table-responsive">
+                            <table class="table" id="SupplierTable">
+                                <thead>
+                                    <tr className="table-dark" >
+                                        <th scope="col" >ID</th>
+                                        <th scope="col" >Supplier Company Name</th>
+                                        <th scope="col">Supplier Name</th>
+                                        <th scope="col" >Phone</th>
+                                        <th scope="col" >Status</th>
+
+
+                                    </tr>
+                                </thead>
+                                <tbody> {
+                                    this.state.supplier.map((supplier, index) => (
+                                        <tr key={index}>
+
+                                            <th scope="row">
+                                                {
+                                                    index + 1
+                                                }</th>
+
+                                            <td> {
+                                                supplier.snname
+                                            }</td>
+
+                                            <td>{
+                                                supplier.sname
+                                            }</td>
+
+                                            <td>{
+                                                supplier.phone
+                                            }</td>
+
+                                            <td>{
+                                                supplier.status
+                                            }</td>
+
+
+
+                                            {/* <td onClick={
                                         () => this.onDelete(supplier._id)
                                     }>
                                         <a className="btn btn-danger">
@@ -162,17 +161,17 @@ class PrintPreviewSupplier extends Component {
                                         </a>
                                     </td> */}
 
-                                    </tr>
-                                ))
-                            } </tbody>
+                                        </tr>
+                                    ))
+                                } </tbody>
 
 
-                        </table>
+                            </table>
+                        </div>
                     </div>
+
                 </div>
-
             </div>
-
         )
     }
 }

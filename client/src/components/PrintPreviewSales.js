@@ -3,6 +3,8 @@ import axios from 'axios';
 import { useParams } from "react-router-dom";
 import { jsPDF } from "jspdf";
 import "jspdf-autotable";
+import NavBar from './NavBar';
+
 function withParams(Component) {
     return props => <Component params={
         useParams()
@@ -16,10 +18,10 @@ class PrintPreviewSales extends Component {
         this.status = "";
 
         this.state = {
-          id: props.params.id,
-          sales: [],
-          searchKey:"",
-      };
+            id: props.params.id,
+            sales: [],
+            searchKey: "",
+        };
     }
 
     componentDidMount() {
@@ -59,7 +61,7 @@ class PrintPreviewSales extends Component {
                 var id = res.data.success._id
 
                 this.setState({
-                    
+
 
                 })
             }
@@ -132,88 +134,89 @@ class PrintPreviewSales extends Component {
     };
 
     render() {
-      const totalQuantity = this.state.sales.reduce((total, item) => total + item.Quantity, 0);
-      const totalPrice = this.state.sales.reduce((total, item) => total + item.TPrice, 0);
-      const TargetQuantity = this.state.sales.reduce((total, item) => total + item.TQuantity, 0);
+        const totalQuantity = this.state.sales.reduce((total, item) => total + item.Quantity, 0);
+        const totalPrice = this.state.sales.reduce((total, item) => total + item.TPrice, 0);
+        const TargetQuantity = this.state.sales.reduce((total, item) => total + item.TQuantity, 0);
 
         return (
+            <div>
+                <NavBar />
+
+                <div className='mt-5'>
+                    <div className="container">
+                        <div className="add_btn mt-2 mb-2">
+                        </div>
+                        <div className="add_btn mt-2 mb-2">
+
+                            <a href="/adminDashboard"><button className='backBtn'>Dashboard</button></a>
+                            <a href="/Saleslist"><button className='backBtn'> Sales List</button></a>
+                            <button onClick={this.handlePrint} className='backBtn'>PDF </button>
+                            <h2><b>Supreme Wine Stores</b></h2>
+                            <p>Address: Supreme Wine Stores, No10,Gamini Road, Galle</p>
+                            <p>Phone: 0915676543</p>
+                            <p>Email: supreme@gmail.com</p>
+
+                        </div>
+                        <div className="row">
+                            <div className="col-sm-4">
+                                <div className="card1" style={{ backgroundColor: 'white', border: '2px solid orange', borderRadius: '10px', width: '200px', height: '100px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                                    <div className="card-body1">
+                                        <h5 className="card-title" style={{ textAlign: 'center' }}>Target Quantity</h5>
+                                        <p className="card-text" style={{ textAlign: 'center' }}>{TargetQuantity}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="col-sm-4">
+                                <div className="card1" style={{ backgroundColor: 'white', border: '2px solid orange', borderRadius: '10px', width: '200px', height: '100px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                                    <div className="card-body1">
+                                        <h5 className="card-title" style={{ textAlign: 'center' }}>Total Quantity</h5>
+                                        <p className="card-text" style={{ textAlign: 'center' }}>{totalQuantity}</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="col-sm-4">
+                                <div className="card2" style={{ backgroundColor: 'white', border: '2px solid orange', borderRadius: '10px', width: '200px', height: '100px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                                    <div className="card-body2">
+                                        <h5 className="card-title" style={{ textAlign: 'center' }}>Total Price</h5>
+                                        <p className="card-text" style={{ textAlign: 'center' }}>LKR {totalPrice}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <h3>Order Detail List</h3>
+
+                        <div className="table-responsive">
+                            <table class="table" id="salesTable">
+                                <thead>
+                                    <tr className="table-dark" >
+                                        <th scope="col">ID</th>
+                                        <th scope="col">Category</th>
+                                        <th scope="col">Type</th>
+                                        <th scope="col">Quantity</th>
+                                        <th scope="col">Target Quantity</th>
+                                        <th scope="col">Total Price</th>
+                                    </tr>
+                                </thead>
+                                <tbody> {
+                                    this.state.sales.map((sales, index) => (
+                                        <tr key={index}>
+                                            <th scope="row">{index + 1}</th>
+                                            <td>{sales.Category}</td>
+                                            <td>{sales.type}</td>
+                                            <td>{sales.Quantity}</td>
+                                            <td>{sales.TQuantity}</td>
+                                            <td>{sales.TPrice}</td>
+                                        </tr>
+                                    ))
+                                } </tbody>
 
 
-            <div className='mt-5'>
-                <div className="container">
-                    <div className="add_btn mt-2 mb-2">
+                            </table>
+                        </div>
                     </div>
-                    <div className="add_btn mt-2 mb-2">
-                       
-                        <a href="/adminDashboard"><button className='backBtn'>Dashboard</button></a>
-                        <a href="/Saleslist"><button className='backBtn'> Sales List</button></a>
-                         <button onClick={this.handlePrint} className='backBtn'>PDF </button>
-                        <h2><b>Supreme Wine Stores</b></h2>
-                        <p>Address: Supreme Wine Stores, No10,Gamini Road, Galle</p>
-                        <p>Phone: 0915676543</p>
-                        <p>Email: supreme@gmail.com</p>
-
-                    </div>
-                    <div className="row">
-                <div className="col-sm-4">
-              <div className="card1" style={{ backgroundColor: 'white', border: '2px solid orange', borderRadius: '10px', width: '200px', height: '100px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                <div className="card-body1">
-                  <h5 className="card-title" style={{ textAlign: 'center' }}>Target Quantity</h5>
-                  <p className="card-text" style={{ textAlign: 'center' }}>{TargetQuantity}</p>
-                </div>
-              </div>
-            </div>
-            <div className="col-sm-4">
-              <div className="card1" style={{ backgroundColor: 'white', border: '2px solid orange', borderRadius: '10px', width: '200px', height: '100px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                <div className="card-body1">
-                  <h5 className="card-title" style={{ textAlign: 'center' }}>Total Quantity</h5>
-                  <p className="card-text" style={{ textAlign: 'center' }}>{totalQuantity}</p>
-                </div>
-              </div>
-            </div>
-            
-            <div className="col-sm-4">
-              <div className="card2" style={{ backgroundColor: 'white', border: '2px solid orange', borderRadius: '10px', width: '200px', height: '100px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-              <div className="card-body2">
-                <h5 className="card-title" style={{ textAlign: 'center' }}>Total Price</h5>
-                <p className="card-text" style={{ textAlign: 'center' }}>LKR {totalPrice}</p>
-              </div>
-              </div>
-              </div>
-              </div>
-                    <h3>Order Detail List</h3>
-
-                    <div className="table-responsive">
-                        <table class="table" id="salesTable">
-                            <thead>
-                                <tr className="table-dark" >
-                                <th scope="col">ID</th>
-                                <th scope="col">Category</th>
-                                <th scope="col">Type</th>
-                                <th scope="col">Quantity</th>
-                                <th scope="col">Target Quantity</th>
-                                <th scope="col">Total Price</th>
-                                </tr>
-                            </thead>
-                            <tbody> {
-                                this.state.sales.map((sales, index) => (
-                                  <tr key={index}>
-                                  <th scope="row">{index + 1}</th>
-                                  <td>{sales.Category}</td>
-                                  <td>{sales.type}</td>
-                                  <td>{sales.Quantity}</td>
-                                  <td>{sales.TQuantity}</td>
-                                  <td>{sales.TPrice}</td>
-                                </tr>
-                                ))
-                            } </tbody>
-
-
-                        </table>
-                    </div>
                 </div>
             </div>
-
         )
     }
 }

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { useParams } from "react-router-dom";
 import Swal from 'sweetalert2';
+import NavBar from './NavBar';
 
 function withParams(Component) {
     return props => <Component params={
@@ -46,16 +47,6 @@ class SupplierList extends Component {
         });
         this.status = value;
     }
-
-    // onDelete = (id) => {
-    //     if (window.confirm("Are you sure you want to delete this?")) {
-    //         axios.delete(`/AddSupplier/post/${id}`).then((res) => {
-    //             alert("Delete Successfully");
-    //             this.retrievePosts();
-
-    //         });
-    //     }
-    // };
 
     onDelete = (id) => {
         Swal.fire({
@@ -106,115 +97,117 @@ class SupplierList extends Component {
         );
 
         return (
-            <div className='mt-5'>
-                <div className="container">
-                    <div className="add_btn mt-2 mb-2">
-                   
-                        <a href="/adminDashboard"><button className='backBtn'> Dashboard</button></a>
-                        <a href="/AddSupplier"><button className='backBtn'>Add Supplier</button></a>
-                        <a href="/PrintPreviewSupplier"><button className='backBtn'>Save as PDF</button></a>
+            <div>
+                <NavBar />
+                <div className='mt-5'>
+                    <div className="container">
+                        <div className="add_btn mt-2 mb-2">
 
-                        <form className="form-inline my-2 my-lg-9 ml-auto">
-                            <input
-                                className="form-control"
-                                type="search"
-                                placeholder="Search"
-                                aria-label="Search"
-                                value={searchKey}
-                                onChange={this.handleSearchKeyChange}
-                            />
-                            <button
-                                className="btn btn-outline-success my-2 my-sm-0"
-                                type="button"
-                                onClick={this.resetSearch}
-                            >
-                                Reset
-                            </button>
-                        </form>
+                            <a href="/adminDashboard"><button className='backBtn'> Dashboard</button></a>
+                            <a href="/AddSupplier"><button className='backBtn'>Add Supplier</button></a>
+                            <a href="/PrintPreviewSupplier"><button className='backBtn'>Save as PDF</button></a>
 
-                    </div>
+                            <form className="form-inline my-2 my-lg-9 ml-auto">
+                                <input
+                                    className="form-control"
+                                    type="search"
+                                    placeholder="Search"
+                                    aria-label="Search"
+                                    value={searchKey}
+                                    onChange={this.handleSearchKeyChange}
+                                />
+                                <button
+                                    className="btn btn-outline-success my-2 my-sm-0"
+                                    type="button"
+                                    onClick={this.resetSearch}
+                                >
+                                    Reset
+                                </button>
+                            </form>
 
-                    <div className="table-responsive"  >
-                    <p><b>Total Suppliers: {filteredSupplier.length}</b></p> {/* added count display */}
-                   
-                        <table class="table" >
-                            <thead>
-                                <tr className="table-dark" >
-                                    <th scope="col" ></th>
-                                    <th scope="col" >Supplier Company Name</th>
-                                    <th scope="col">Supplier Name</th>
-                                    <th scope="col" >Address</th>
-                                    <th scope="col" >Email</th>
-                                    <th scope="col" >Website</th>
-                                    <th scope="col" >Phone</th>
-                                    <th scope="col" >Status</th>
-                                    <th scope="col" >Action</th>
-                                    <th scope="col" ></th>
-                                </tr>
-                            </thead>
-                            <tbody> {
-                                this.state.supplier.map((supplier, index) => (
-                                    <tr key={index}>
+                        </div>
 
-                                        <th scope="row">
-                                            {
-                                                index + 1
-                                            }</th>
+                        <div className="table-responsive"  >
+                            <p><b>Total Suppliers: {filteredSupplier.length}</b></p> {/* added count display */}
 
-                                        <td> {
-                                            supplier.snname
-                                        }</td>
-
-                                        <td>{
-                                            supplier.sname
-                                        }</td>
-
-                                        <td>{
-                                            supplier.address
-                                        }</td>
-
-                                        <td>{
-                                            supplier.email
-                                        }</td>
-
-                                        <td>{
-                                            supplier.website
-                                        }</td>
-
-                                        <td>{
-                                            supplier.phone
-                                        }</td>
-
-                                        <td>{
-                                            supplier.status
-                                        }</td>
-
-
-
-                                        <td onClick={
-                                            () => this.onDelete(supplier._id)
-                                        }>
-                                            <a className="btn btn-danger">
-                                                <i className="fas fa-trash-alt"></i>
-                                            </a>
-                                        </td>
-
-                                        <td>
-                                            <a href={`/EditSupplier/${supplier._id}`} className="btn btn-success">
-                                                <i className="fas fa-edit"></i>
-                                            </a>
-                                        </td>
-
+                            <table class="table" >
+                                <thead>
+                                    <tr className="table-dark" >
+                                        <th scope="col" ></th>
+                                        <th scope="col" >Supplier Company Name</th>
+                                        <th scope="col">Supplier Name</th>
+                                        <th scope="col" >Address</th>
+                                        <th scope="col" >Email</th>
+                                        <th scope="col" >Website</th>
+                                        <th scope="col" >Phone</th>
+                                        <th scope="col" >Status</th>
+                                        <th scope="col" >Action</th>
+                                        <th scope="col" ></th>
                                     </tr>
-                                ))
-                            } </tbody>
+                                </thead>
+                                <tbody> {
+                                    this.state.supplier.map((supplier, index) => (
+                                        <tr key={index}>
+
+                                            <th scope="row">
+                                                {
+                                                    index + 1
+                                                }</th>
+
+                                            <td> {
+                                                supplier.snname
+                                            }</td>
+
+                                            <td>{
+                                                supplier.sname
+                                            }</td>
+
+                                            <td>{
+                                                supplier.address
+                                            }</td>
+
+                                            <td>{
+                                                supplier.email
+                                            }</td>
+
+                                            <td>{
+                                                supplier.website
+                                            }</td>
+
+                                            <td>{
+                                                supplier.phone
+                                            }</td>
+
+                                            <td>{
+                                                supplier.status
+                                            }</td>
 
 
-                        </table>
+
+                                            <td onClick={
+                                                () => this.onDelete(supplier._id)
+                                            }>
+                                                <a className="btn btn-danger">
+                                                    <i className="fas fa-trash-alt"></i>
+                                                </a>
+                                            </td>
+
+                                            <td>
+                                                <a href={`/EditSupplier/${supplier._id}`} className="btn btn-success">
+                                                    <i className="fas fa-edit"></i>
+                                                </a>
+                                            </td>
+
+                                        </tr>
+                                    ))
+                                } </tbody>
+
+
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
-
         )
     }
 }

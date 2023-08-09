@@ -3,6 +3,8 @@ import axios from 'axios';
 import { useParams } from "react-router-dom";
 import { jsPDF } from "jspdf";
 import "jspdf-autotable";
+import NavBar from './NavBar';
+
 function withParams(Component) {
     return props => <Component params={
         useParams()
@@ -142,100 +144,100 @@ class PrintPreviewOrder extends Component {
     render() {
 
         return (
+            <div>
+                <NavBar />
+                <div className='mt-5'>
+                    <div className="container">
+                        <div className="add_btn mt-2 mb-2">
+                        </div>
+                        <div className="add_btn mt-2 mb-2">
 
+                            <a href="/adminDashboard"><button className='backBtn'> Dashboard</button></a>
+                            <a href="/OrderList"><button className='backBtn'> Order List</button></a>
+                            <button onClick={this.handlePrint} className='backBtn'>Save </button>
+                            <h2><b>Supreme Wine Stores</b></h2>
+                            <p>Address: Supreme Wine Stores, No10,Gamini Road, Galle</p>
+                            <p>Phone: 0915676543</p>
+                            <p>Email: supreme@gmail.com</p>
 
-            <div className='mt-5'>
-                <div className="container">
-                    <div className="add_btn mt-2 mb-2">
-                    </div>
-                    <div className="add_btn mt-2 mb-2">
+                        </div>
 
-                        <a href="/adminDashboard"><button className='backBtn'> Dashboard</button></a>
-                        <a href="/OrderList"><button className='backBtn'> Order List</button></a>
-                        <button onClick={this.handlePrint} className='backBtn'>Save </button>
-                        <h2><b>Supreme Wine Stores</b></h2>
-                        <p>Address: Supreme Wine Stores, No10,Gamini Road, Galle</p>
-                        <p>Phone: 0915676543</p>
-                        <p>Email: supreme@gmail.com</p>
+                        <h3>Order Detail List</h3>
 
-                    </div>
-                  
-                    <h3>Order Detail List</h3>
-
-                    <div className="table-responsive">
-                        <table class="table" id="OrderTable">
-                            <thead>
-                                <tr className="table-dark" >
-                                    <th scope="col" ></th>
-                                    <th scope="col" >Supplier Company Name</th>
-                                    <th scope="col">Supplier Name</th>
-                                    <th scope="col" >Date</th>
-                                    <th scope="col" >Product Name</th>
-                                    <th scope="col" >Quantity</th>
-                                    <th scope="col" >Unit Price(LKR)</th>
-                                    <th scope="col" >Total Price(LKR)</th>
-                                    <th scope="col" >Status</th>
-                                    <th scope="col" ></th>
-
-
+                        <div className="table-responsive">
+                            <table class="table" id="OrderTable">
+                                <thead>
+                                    <tr className="table-dark" >
+                                        <th scope="col" ></th>
+                                        <th scope="col" >Supplier Company Name</th>
+                                        <th scope="col">Supplier Name</th>
+                                        <th scope="col" >Date</th>
+                                        <th scope="col" >Product Name</th>
+                                        <th scope="col" >Quantity</th>
+                                        <th scope="col" >Unit Price(LKR)</th>
+                                        <th scope="col" >Total Price(LKR)</th>
+                                        <th scope="col" >Status</th>
+                                        <th scope="col" ></th>
 
 
 
 
-                                </tr>
-                            </thead>
-                            <tbody> {
-                                this.state.order.map((order, index) => (
-                                    <tr key={index}>
-
-                                        <th scope="row">
-                                            {
-                                                index + 1
-                                            }</th>
-
-                                        <td> {
-                                            order.snname
-                                        }</td>
-
-                                        <td>{
-                                            order.sname
-                                        }</td>
-
-                                        <td>{
-                                            order.date.substring(0, 10)
-                                        }</td>
-
-
-                                        <td>{
-                                            order.pname
-                                        }</td>
-
-                                        <td>{
-                                            order.quantity
-                                        }</td>
-
-                                        <td>{
-                                            order.unitprice
-                                        }</td>
-
-                                        <td>{
-                                            order.quantity * order.unitprice
-                                        }</td>
-                                        <td>{
-                                            order.status
-                                        }</td>
 
 
                                     </tr>
-                                ))
-                            } </tbody>
+                                </thead>
+                                <tbody> {
+                                    this.state.order.map((order, index) => (
+                                        <tr key={index}>
+
+                                            <th scope="row">
+                                                {
+                                                    index + 1
+                                                }</th>
+
+                                            <td> {
+                                                order.snname
+                                            }</td>
+
+                                            <td>{
+                                                order.sname
+                                            }</td>
+
+                                            <td>{
+                                                order.date.substring(0, 10)
+                                            }</td>
 
 
-                        </table>
+                                            <td>{
+                                                order.pname
+                                            }</td>
+
+                                            <td>{
+                                                order.quantity
+                                            }</td>
+
+                                            <td>{
+                                                order.unitprice
+                                            }</td>
+
+                                            <td>{
+                                                order.quantity * order.unitprice
+                                            }</td>
+                                            <td>{
+                                                order.status
+                                            }</td>
+
+
+                                        </tr>
+                                    ))
+                                } </tbody>
+
+
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
-
         )
     }
 }

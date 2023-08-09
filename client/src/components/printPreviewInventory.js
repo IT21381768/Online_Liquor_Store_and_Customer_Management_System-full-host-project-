@@ -2,8 +2,7 @@ import React, {Component} from 'react';
 import axios from 'axios';
 import {useParams} from "react-router-dom";
 import ReactToPrint, { PrintContextConsumer } from 'react-to-print';
-import { inventoryToPrint } from './inventoryToPrint';
-
+import NavBar from './NavBar';
 
 function withParams(Component) {
     return props => <Component params={
@@ -52,6 +51,8 @@ class printPreveiwInventory extends React.PureComponent {
 
     render() {
         return (
+            <div>
+        <NavBar />
             <div className='mt-5'>
                 <a href="/adminDashboard"><button className='backBtn'>Back to Dashboard</button></a>
                 <ReactToPrint content={() => this.componentRef}>
@@ -115,6 +116,7 @@ class printPreveiwInventory extends React.PureComponent {
                         </div>
                     </div>
                 </inventoryToPrint>
+            </div>
             </div>
         )
     }

@@ -14,16 +14,16 @@ mongoose.set('strictQuery', true);
 const port = 8000;
 const url = 'mongodb+srv://minsandi:minsandi123@mernapp.cnpzawc.mongodb.net/?retryWrites=true&w=majority'
 mongoose.connect(url, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
+  useNewUrlParser: true,
+  useUnifiedTopology: true
 })
 
-    .then(() => console.log('Connected to MongoDB'))
-    .catch(err => console.log('Database not connected', err));
+  .then(() => console.log('Connected to MongoDB'))
+  .catch(err => console.log('Database not connected', err));
 
 
 app.listen(port, () => {
-    console.log(`Server is running on port ${port}`);
+  console.log(`Server is running on port ${port}`);
 });
 
 //contact
@@ -33,19 +33,19 @@ app.use('/contactAdmin', postRoutes);
 
 //delivery
 const detailsRoutes = require('./routes/details');
-app.use('/informationForm', detailsRoutes); 
+app.use('/informationForm', detailsRoutes);
 app.use('/DisplayInfo', detailsRoutes);
 
 
 
 //products
 const productsRoutes = require('./routes/inventory');
-app.use('/spirits', productsRoutes); 
+app.use('/spirits', productsRoutes);
 
 const cartRoutes = require('./routes/cart');
-app.use('/spirits', cartRoutes); 
+app.use('/spirits', cartRoutes);
 
-app.use('/categoryDetails', cartRoutes); 
+app.use('/categoryDetails', cartRoutes);
 
 //employee
 const employeeRoutes = require('./routes/employee');
@@ -121,47 +121,46 @@ app.use('/login', loginRoutes);
 
 //login
 app.post("/login", (req, res) => {
-    const { email, password } = req.body;
-    EmployeeModel.findOne({ email: email })
-      .then(user => {
-        if (user) {
-          if (password === user.password) {
-            res.json("Login Success");
-          } else {
-            res.json("Password didn't match");
-          }
+  const { email, password } = req.body;
+  EmployeeModel.findOne({ email: email })
+    .then(user => {
+      if (user) {
+        if (password === user.password) {
+          res.json("Login Success");
         } else {
-          res.json("User not registered");
+          res.json("Password didn't match");
         }
-      })
-      .catch(err => {
-        console.error('Error during login:', err);
-        res.status(500).json("Server error");
-      });
-  });
-  
- 
-  //register
-  app.post('/register', (req, res) => {
-    const { name, email, password } = req.body;
-  
-    // Check if an employee with the provided email already exists
-    EmployeeModel.findOne({ email: email })
-      .then(existingEmployee => {
-        if (existingEmployee) {
-          res.status(400).json("Email is already in use");
-        } else {
-          EmployeeModel.create({ name:name, email: email, password: password })
-            .then(employee => res.json(employee))
-            .catch(err => {
-              console.error('Error during registration:', err);
-              res.status(500).json("Server error");
-            });
-        }
-      })
-      .catch(err => {
-        console.error('Error during registration:', err);
-        res.status(500).json("Server error");
-      });
-  });
-  
+      } else {
+        res.json("User not registered");
+      }
+    })
+    .catch(err => {
+      console.error('Error during login:', err);
+      res.status(500).json("Server error");
+    });
+});
+
+
+//register
+app.post('/register', (req, res) => {
+  const { name, email, password } = req.body;
+
+  // Check if an employee with the provided email already exists
+  EmployeeModel.findOne({ email: email })
+    .then(existingEmployee => {
+      if (existingEmployee) {
+        res.status(400).json("Email is already in use");
+      } else {
+        EmployeeModel.create({ name: name, email: email, password: password })
+          .then(employee => res.json(employee))
+          .catch(err => {
+            console.error('Error during registration:', err);
+            res.status(500).json("Server error");
+          });
+      }
+    })
+    .catch(err => {
+      console.error('Error during registration:', err);
+      res.status(500).json("Server error");
+    });
+});
