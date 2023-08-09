@@ -92,6 +92,10 @@ function Login() {
                     <button type="submit" className="formBtn">
                         Login
                     </button>
+                    <p><b>If you a admin:</b></p>
+                    <button type="submit" className="formBtn">
+                       Admin Login
+                    </button>
                 </center>
             </form>
         </div>

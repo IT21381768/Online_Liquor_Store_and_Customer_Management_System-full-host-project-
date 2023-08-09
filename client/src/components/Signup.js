@@ -53,7 +53,7 @@ function Signup() {
                 </center>
             </form>
             <center>
-            <p>Already have a account:</p>
+            <p><b>Already have a account:</b></p>
             <a href="/login">
             <button type="submit" className="formBtn">
                     Login
