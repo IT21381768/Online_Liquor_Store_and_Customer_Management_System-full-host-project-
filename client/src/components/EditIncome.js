@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { useParams, useLocation } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import "./form.css"
 import Swal from 'sweetalert2';
+import NavBar from './NavBar';
+
 function withParams(Component) {
   return props => <Component params={useParams()} />
 }
@@ -19,7 +21,7 @@ class EditIncome extends Component {
       category: '',
       remarks: '',
       amount: '',
-      status:''
+      status: ''
     };
   }
 
@@ -52,9 +54,9 @@ class EditIncome extends Component {
     e.preventDefault();
     const id = this.state.id
 
-    const {date, category, remarks, amount, status  } = this.state;
+    const { date, category, remarks, amount, status } = this.state;
 
-    let data =  this.state.finance;  
+    let data = this.state.finance;
     data = {
       date: date.length != 0 ? date : data.date,
       category: category.length != 0 ? category : data.category,
@@ -64,31 +66,31 @@ class EditIncome extends Component {
     }
 
 
-  //   axios.put(`/EditIncome/post/${id}`, data).then((res) => {
-  //     if (res.data.success) {
-  //       console.log(res.data.success._id);
-  //       alert("Updated Successfully");
-  //       var id = res.data.success._id
-  //       window.location.href=`/IncomeList`;
+    //   axios.put(`/EditIncome/post/${id}`, data).then((res) => {
+    //     if (res.data.success) {
+    //       console.log(res.data.success._id);
+    //       alert("Updated Successfully");
+    //       var id = res.data.success._id
+    //       window.location.href=`/IncomeList`;
 
-  //       this.setState(
-  //         {
-  //               date: '',
-  //               category: '',
-  //               remarks: '',
-  //               amount: '',
-  //               status: ''
-  //         }
-  //       )
-  //     }
-  //   })
+    //       this.setState(
+    //         {
+    //               date: '',
+    //               category: '',
+    //               remarks: '',
+    //               amount: '',
+    //               status: ''
+    //         }
+    //       )
+    //     }
+    //   })
 
-  // }
+    // }
 
- 
-  
+
+
     axios.put(`/EditIncome/post/${id}`, data).then((res) => {
-  
+
       if (res.data.success) {
         Swal.fire({
           title: 'Updated Successfully!',
@@ -99,11 +101,11 @@ class EditIncome extends Component {
         }).then(() => {
           this.setState({
             date: '',
-                          category: '',
-                          remarks: '',
-                          amount: '',
-                          status: ''
-  
+            category: '',
+            remarks: '',
+            amount: '',
+            status: ''
+
           });
           window.location.href = `/IncomeList`;
         });
@@ -120,7 +122,7 @@ class EditIncome extends Component {
   };
 
 
-  
+
   onDelete = (id) => {
     if (window.confirm("Are you sure you want to delete this?")) {
       axios.delete(`/contact/post/${id}`).then((res) => {
@@ -130,69 +132,65 @@ class EditIncome extends Component {
     }
   };
 
- 
+
 
 
   render() {
-    
-    const { _id, date, category, type, remarks, amount, status  } = this.state.finance;
-    return (
-        <div className='container'>
-        <a href="/IncomeList"><button className='backBtn'>Income List</button></a>
-        
-        <form className="create" >
-        <h3>Add New Income</h3>
 
-        
-        {/* <label>ID: </label>
+    const { _id, date, category, type, remarks, amount, status } = this.state.finance;
+    return (
+      <div>
+        <NavBar />
+        <div className='container'>
+          <a href="/IncomeList"><button className='backBtn'>Income List</button></a>
+
+          <form className="create" >
+            <h3>Add New Income</h3>
+
+
+            {/* <label>ID: </label>
         <input type="text" name="_id" value={this.state._id}
                      onChange={this.handleChange} id="formGroupExampleInput" placeholder={_id}  /> */}
 
 
 
-        <label>Date </label>
-        <input type="date" name="report id" value={this.state.repor}
-                     onChange={this.handleChange} id="formGroupExampleInput" placeholder={date}  />
-       
-
-        <label>Category: </label>
-        <input type="text" name="category" value={this.state.category}
-                     onChange={this.handleChange} id="formGroupExampleInput" placeholder={category} />
-
-        <label>Type: </label>
-        <input type="text" name="type" value={this.state.type}
-                     onChange={this.handleChange} id="formGroupExampleInput"placeholder={type}  />
-
-        <label>Remarks: </label>
-        <input type="text" name="remarks" value={this.state.remarks}
-                     onChange={this.handleChange} id="formGroupExampleInput" placeholder={remarks}  />
-
-        <label>Amount: </label>
-        <input type="number" name="amount" value={this.state.amount}
-                     onChange={this.handleChange} id="formGroupExampleInput" placeholder={amount} />
+            <label>Date </label>
+            <input type="date" name="report id" value={this.state.repor}
+              onChange={this.handleChange} id="formGroupExampleInput" placeholder={date} />
 
 
-        <label>Status: </label>
-        <input type="text" name="status" value={this.state.status}
-                     onChange={this.handleChange} id="formGroupExampleInput" placeholder={status} />
-        
+            <label>Category: </label>
+            <input type="text" name="category" value={this.state.category}
+              onChange={this.handleChange} id="formGroupExampleInput" placeholder={category} />
 
-        
+            <label>Type: </label>
+            <input type="text" name="type" value={this.state.type}
+              onChange={this.handleChange} id="formGroupExampleInput" placeholder={type} />
 
-     
-        <center><a href='/IncomeList'><button className='formBtn' type="submit" onClick={this.onSubmit}>Update Income</button></a></center>
+            <label>Remarks: </label>
+            <input type="text" name="remarks" value={this.state.remarks}
+              onChange={this.handleChange} id="formGroupExampleInput" placeholder={remarks} />
 
-        
-        
-    </form>
-    </div>
+            <label>Amount: </label>
+            <input type="number" name="amount" value={this.state.amount}
+              onChange={this.handleChange} id="formGroupExampleInput" placeholder={amount} />
 
-     
+
+            <label>Status: </label>
+            <input type="text" name="status" value={this.state.status}
+              onChange={this.handleChange} id="formGroupExampleInput" placeholder={status} />
 
 
 
 
 
+            <center><a href='/IncomeList'><button className='formBtn' type="submit" onClick={this.onSubmit}>Update Income</button></a></center>
+
+
+
+          </form>
+        </div>
+      </div>
     )
   }
 }

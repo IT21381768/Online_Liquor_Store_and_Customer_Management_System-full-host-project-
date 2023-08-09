@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { useParams, useLocation } from "react-router-dom";
 import "./form.css"
+import NavBar from './NavBar';
+
 function withParams(Component) {
   return props => <Component params={useParams()} />
 }
@@ -20,9 +22,9 @@ class EditEmployee extends Component {
       dateOfBirth: '',
       gender: '',
       contactNo: '',
-      type:'',
-      salary:'',
-      password:''
+      type: '',
+      salary: '',
+      password: ''
     };
   }
 
@@ -55,9 +57,9 @@ class EditEmployee extends Component {
     e.preventDefault();
     const id = this.state.id
 
-    const {NIC, name, address, dateOfBirth, gender, contactNo, type, salary, password } = this.state;
+    const { NIC, name, address, dateOfBirth, gender, contactNo, type, salary, password } = this.state;
 
-    let data =  this.state.employee;  
+    let data = this.state.employee;
     data = {
       NIC: NIC.length != 0 ? NIC : data.NIC,
       name: name.length != 0 ? name : data.name,
@@ -66,9 +68,9 @@ class EditEmployee extends Component {
       gender: gender.length != 0 ? gender : data.gender,
       contactNo: contactNo.length != 0 ? contactNo : data.contactNo,
       type: type.length != 0 ? type : data.type,
-      salary: salary.length != 0 ?salary : data.salary,
+      salary: salary.length != 0 ? salary : data.salary,
       password: password.length != 0 ? password : data.password,
-      
+
     }
 
 
@@ -87,9 +89,9 @@ class EditEmployee extends Component {
             dateOfBirth: '',
             gender: '',
             contactNo: '',
-            type:'',
-            salary:'',
-            password:''
+            type: '',
+            salary: '',
+            password: ''
           }
         )
       }
@@ -110,106 +112,108 @@ class EditEmployee extends Component {
 
 
   render() {
-    
-    const { _id, NIC, name, address, dateOfBirth, gender, contactNo, type, salary, password  } = this.state.employee;
+
+    const { _id, NIC, name, address, dateOfBirth, gender, contactNo, type, salary, password } = this.state.employee;
     return (
+      <div>
+        <NavBar />
         <div className='container'>
-        <a href="/adminDashboard"><button className='backBtn'>Back to Dashboard</button></a>
-        <a href="/EmployeeList"><button className='backBtn'>Employee List</button></a>
-        
-        <form className="update" onSubmit={this.onSubmit}>
-  <h3>Update Employee</h3>
+          <a href="/adminDashboard"><button className='backBtn'>Back to Dashboard</button></a>
+          <a href="/EmployeeList"><button className='backBtn'>Employee List</button></a>
 
-  <label>NIC: </label>
-  <input
-    type="text"
-    name="NIC"
-    value={this.state.NIC}
-    onChange={this.handleChange}
-    placeholder={NIC}
-  />
+          <form className="update" onSubmit={this.onSubmit}>
+            <h3>Update Employee</h3>
 
-  <label>Name: </label>
-  <input
-    type="text"
-    name="name"
-    value={this.state.name}
-    onChange={this.handleChange}
-    placeholder={name}
-  />
+            <label>NIC: </label>
+            <input
+              type="text"
+              name="NIC"
+              value={this.state.NIC}
+              onChange={this.handleChange}
+              placeholder={NIC}
+            />
 
-  <label>Address: </label>
-  <input
-    type="text"
-    name="address"
-    value={this.state.address}
-    onChange={this.handleChange}
-    placeholder={address}
-  />
+            <label>Name: </label>
+            <input
+              type="text"
+              name="name"
+              value={this.state.name}
+              onChange={this.handleChange}
+              placeholder={name}
+            />
 
-  <label>Date of Birth: </label>
-  <input
-    type="date"
-    name="dateOfBirth"
-    value={this.state.dateOfBirth}
-    onChange={this.handleChange}
-    placeholder={dateOfBirth}
-    max={new Date().toISOString().split("T")[0]}
-  />
+            <label>Address: </label>
+            <input
+              type="text"
+              name="address"
+              value={this.state.address}
+              onChange={this.handleChange}
+              placeholder={address}
+            />
 
-  <label>Gender: </label>
-  <select name="gender" value={this.state.gender} onChange={this.handleChange} placeholder={gender}>
-    <option value="">--Select Gender--</option>
-    <option value="Male">Male</option>
-    <option value="Female">Female</option>
-    <option value="other">Other</option>
-  </select>
+            <label>Date of Birth: </label>
+            <input
+              type="date"
+              name="dateOfBirth"
+              value={this.state.dateOfBirth}
+              onChange={this.handleChange}
+              placeholder={dateOfBirth}
+              max={new Date().toISOString().split("T")[0]}
+            />
 
-  <label>Phone: </label>
-  <input
-    type="tel"
-    name="contactNo"
-    value={this.state.contactNo}
-    onChange={this.handleChange}
-    minLength="10"
-    placeholder={contactNo}
-  />
+            <label>Gender: </label>
+            <select name="gender" value={this.state.gender} onChange={this.handleChange} placeholder={gender}>
+              <option value="">--Select Gender--</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="other">Other</option>
+            </select>
 
-  <label>Type: </label>
-  <select name="type" value={this.state.type} onChange={this.handleChange} placeholder={type}>
-    <option value="">--Select Type--</option>
-    <option value="Store Staff">Store Staff</option>
-    <option value="Delivery Staff">Delivery Staff</option>
-  </select>
+            <label>Phone: </label>
+            <input
+              type="tel"
+              name="contactNo"
+              value={this.state.contactNo}
+              onChange={this.handleChange}
+              minLength="10"
+              placeholder={contactNo}
+            />
 
-  <label>Salary (Rs.): </label>
-  <input
-    type="number"
-    name="salary"
-    value={this.state.salary}
-    onChange={this.handleChange}
-    min="30000"
-    placeholder={salary}
-  />
+            <label>Type: </label>
+            <select name="type" value={this.state.type} onChange={this.handleChange} placeholder={type}>
+              <option value="">--Select Type--</option>
+              <option value="Store Staff">Store Staff</option>
+              <option value="Delivery Staff">Delivery Staff</option>
+            </select>
 
-  <label>Password: </label>
-  <input
-    type="password"
-    name="password"
-    value={this.state.password}
-    onChange={this.handleChange}
-    minLength="8"
-  />
+            <label>Salary (Rs.): </label>
+            <input
+              type="number"
+              name="salary"
+              value={this.state.salary}
+              onChange={this.handleChange}
+              min="30000"
+              placeholder={salary}
+            />
 
-  <center>
-    <button className="formBtn" type="submit">
-      Update Employee
-    </button>
-  </center>
-</form>
+            <label>Password: </label>
+            <input
+              type="password"
+              name="password"
+              value={this.state.password}
+              onChange={this.handleChange}
+              minLength="8"
+            />
 
-    </div>
+            <center>
+              <button className="formBtn" type="submit">
+                Update Employee
+              </button>
+            </center>
+          </form>
 
+        </div>
+      </div>
 
     )
   }

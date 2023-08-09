@@ -4,6 +4,8 @@ import axios from 'axios';
 import { useParams, useLocation } from "react-router-dom";
 import "./delivery.css"
 import Swal from 'sweetalert2';
+import NavBar from './NavBar';
+
 function withParams(Component) {
   return props => <Component params={useParams()} />
 }
@@ -68,105 +70,48 @@ class DisplayInfo extends Component {
       status: "ORDERED"
     }
 
-  //   axios.put(`/informationForm/post/${id}`, data).then((res) => {
-  //     if (res.data.success) {
-  //       console.log(res.data.success._id);
-  //       alert("Updated Successfully");
-  //       var id = res.data.success._id
 
-  //       this.setState(
-  //         {
-  //           name: "",
-  //           email: "",
-  //           message: "",
-  //           address: "",
-  //           town: "",
-  //           phone: ""
-  //         }
-  //       )
-  //     }
-  //   })
-  // }
+    axios.put(`/informationForm/post/${id}`, data).then((res) => {
 
-  axios.put(`/informationForm/post/${id}`, data).then((res) => {
-
-    if (res.data.success) {
-      Swal.fire({
-        title: 'Updated Successfully!',
-        text: 'Your changes have been saved.',
-        icon: 'success',
-        confirmButtonColor: '#3085d6',
-        confirmButtonText: 'OK'
-      }).then(() => {
-        this.setState({
-          name: "",
+      if (res.data.success) {
+        Swal.fire({
+          title: 'Updated Successfully!',
+          text: 'Your changes have been saved.',
+          icon: 'success',
+          confirmButtonColor: '#3085d6',
+          confirmButtonText: 'OK'
+        }).then(() => {
+          this.setState({
+            name: "",
             email: "",
             message: "",
             address: "",
             town: "",
             phone: ""
 
+          });
+
         });
-
+      }
+    }).catch((error) => {
+      Swal.fire({
+        title: 'Error!',
+        text: 'An error occurred while updating the post. Please try again later.',
+        icon: 'error',
+        confirmButtonColor: '#3085d6',
+        confirmButtonText: 'OK'
       });
-    }
-  }).catch((error) => {
-    Swal.fire({
-      title: 'Error!',
-      text: 'An error occurred while updating the post. Please try again later.',
-      icon: 'error',
-      confirmButtonColor: '#3085d6',
-      confirmButtonText: 'OK'
     });
-  });
-};
+  };
 
 
 
-  // onDelete = (id) => {
-  //   axios.delete(`/informationForm/post/${id}`).then((res) => {
-  //     alert("Deleted Successfully");
-  //     this.retrievePosts();
-  //   })
-  // }
-
-
-//   onDelete = (id) => {
-//     Swal.fire({
-//         title: 'Are you sure you want to delete this?',
-//         icon: 'warning',
-//         showCancelButton: true,
-//         confirmButtonColor: '#FFB400',
-//         cancelButtonColor: '#d33',
-//         confirmButtonText: 'Yes, delete it!'
-//     }).then((result) => {
-//         if (result.isConfirmed) {
-//             axios.delete(`/informationForm/post/${id}`).then((res) => {
-//                 Swal.fire({
-//                     title: 'Deleted!',
-//                     text: 'Your post has been deleted.',
-//                     icon: 'success',
-//                     timer: 2000, // show alert for 2 seconds
-//                     timerProgressBar: true, // show progress bar
-//                     onClose: () => {
-//                         // do something when the alert is closed
-//                         this.retrievePosts();
-//                     }
-//                 });
-//             });
-//         }
-//     });
-// };
 
   render() {
     const { _id, name, address, email, message, town, phone } = this.state.details;
     return (
       <div>
-
-
-
-
-
+        <NavBar />
         <div class="delivery-form-display">
           <form>
             <h2>Your Details</h2>
@@ -203,12 +148,12 @@ class DisplayInfo extends Component {
 
             </button><br />
 
-            
-              <button className="btn-dilivery-edit" type="submit" style={{ marginTop: '15px' }} >
+
+            <button className="btn-dilivery-edit" type="submit" style={{ marginTop: '15px' }} >
               <a href={`/deliveyStatus/${_id}`}>
                 <i className="fa fa-arrow-circle-right"></i> Next  </a>
-              </button>
-            
+            </button>
+
 
           </form>
         </div>

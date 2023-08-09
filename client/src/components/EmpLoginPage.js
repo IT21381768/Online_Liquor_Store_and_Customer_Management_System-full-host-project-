@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import NavBar from './NavBar';
 
 class EmpLoginPage extends Component {
   constructor(props) {
@@ -53,37 +54,40 @@ class EmpLoginPage extends Component {
 
   render() {
     return (
-      <div className="container">
-        <form onSubmit={this.handleSubmit}>
-          <h3>Employee Login</h3>
+      <div>
+        <NavBar />
+        <div className="container">
+          <form onSubmit={this.handleSubmit}>
+            <h3>Employee Login</h3>
 
-          <label>NIC: </label>
-          <input
-            type="text"
-            name="username"
-            value={this.state.NIC}
-            onChange={this.handleNICChange}
-            required
-          />
+            <label>NIC: </label>
+            <input
+              type="text"
+              name="username"
+              value={this.state.NIC}
+              onChange={this.handleNICChange}
+              required
+            />
 
-          <label>Password: </label>
-          <input
-            type="password"
-            name="password"
-            value={this.state.password}
-            onChange={this.handlePasswordChange}
-            required
-          />
+            <label>Password: </label>
+            <input
+              type="password"
+              name="password"
+              value={this.state.password}
+              onChange={this.handlePasswordChange}
+              required
+            />
 
-          {this.state.error && (
-            <div className="alert alert-danger">{this.state.error}</div>
-          )}
-          <center>
-            <button className="formBtn" type="submit">
-              Login
-            </button>
-          </center>
-        </form>
+            {this.state.error && (
+              <div className="alert alert-danger">{this.state.error}</div>
+            )}
+            <center>
+              <button className="formBtn" type="submit">
+                Login
+              </button>
+            </center>
+          </form>
+        </div>
       </div>
     );
   }

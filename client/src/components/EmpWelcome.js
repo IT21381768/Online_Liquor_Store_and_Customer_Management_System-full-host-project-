@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { useParams, Link } from 'react-router-dom';
-import { jsPDF } from 'jspdf';
+import { useParams } from 'react-router-dom';
 import 'jspdf-autotable';
 import Leave from './Leave';
-
+import NavBar from './NavBar';
 
 function withParams(Component) {
   return (props) => <Component params={useParams()} {...props} />;
@@ -81,8 +80,10 @@ class EmpWelcome extends Component {
     const loggedInNIC = sessionStorage.getItem('loggedInNIC');
 
     return (
-      <div className="mt-5">
-        <div className="container">
+      <div>
+        <NavBar />
+        <div className="mt-5">
+          <div className="container">
             <div className="table-responsive">
               <table className="table" id="EmployeeTable">
                 <thead>
@@ -106,28 +107,27 @@ class EmpWelcome extends Component {
                       <td>{employee.NIC}</td>
                       <td>{employee.name}</td>
                       <td>{employee.address}</td>
-                      <td>{employee.dateOfBirth.substring(0,10)}</td>
-                  <td>{employee.gender}</td>
-                  <td>{employee.contactNo}</td>
-                  <td>{employee.type}</td>
-                  <td>{employee.salary}</td>
-                  <td>{employee.password}</td>
-                  
-                </tr>
-              ))}
-            </tbody>
-          </table>
-                 
-          
+                      <td>{employee.dateOfBirth.substring(0, 10)}</td>
+                      <td>{employee.gender}</td>
+                      <td>{employee.contactNo}</td>
+                      <td>{employee.type}</td>
+                      <td>{employee.salary}</td>
+                      <td>{employee.password}</td>
+
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+
+
+            </div>
+          </div>
+          <Leave loggedInNIC={sessionStorage.getItem('loggedInNIC')} />
         </div>
       </div>
-      <Leave loggedInNIC={sessionStorage.getItem('loggedInNIC')} />
-    </div>
-    
     );
   }
 }
 
 export default withParams(EmpWelcome);
 
-  
