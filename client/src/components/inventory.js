@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import './form.css';
+import NavBar from './NavBar';
 
 class inventory extends Component {
   constructor(props) {
@@ -34,6 +35,7 @@ class inventory extends Component {
 
     return (
       <div>
+        <NavBar />
         <div className="add_btn mt-2 mb-2">
           <a href="/adminDashboard"><button className='backBtn'>Back to Dashboard</button></a>
           <a href="/inventoryDetail"><button className='backBtn'>View All Products</button></a>
@@ -49,7 +51,7 @@ class inventory extends Component {
             <tbody>
               {outOfStockProducts.map(product => (
                 <tr className='tr2' key={product._id}>
-                  <td className='td1'>{product.name}</td> 
+                  <td className='td1'>{product.name}</td>
                   <td className='td2'>{product.quantity}</td>
                 </tr>
               ))}

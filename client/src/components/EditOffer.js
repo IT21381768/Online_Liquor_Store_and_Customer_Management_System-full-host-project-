@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { useParams } from "react-router-dom";
 import "./form.css"
-import Navbar from './NavBar';
+import NavBar from './NavBar';
 
 function withParams(Component) {
   return props => <Component params={useParams()} />

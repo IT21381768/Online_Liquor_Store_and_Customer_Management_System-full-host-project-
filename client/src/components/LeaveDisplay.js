@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { useParams, useLocation } from "react-router-dom";
 import "./leave.css"
+import NavBar from './NavBar';
 
 function withParams(Component) {
   return props => <Component params={useParams()} />
@@ -48,7 +49,7 @@ class LeaveDisplay extends Component {
     e.preventDefault();
     const id = this.state.id
     const { NIC, leaveDate, reason } = this.state;
-    let data = { ...this.state.leaves };  
+    let data = { ...this.state.leaves };
     data.NIC = NIC.length !== 0 ? NIC : data.NIC;
     data.leaveDate = leaveDate.length !== 0 ? leaveDate : data.leaveDate;
     data.reason = reason.length !== 0 ? reason : data.reason;
@@ -79,57 +80,55 @@ class LeaveDisplay extends Component {
   render() {
     const { _id, NIC, leaveDate, reason } = this.state.leaves;
     return (
-      <div className="container-1">
-        <h2>Contact</h2>
-        <form>
-          <label>NIC: </label>
-          <input
-            type="text"
-            name="NIC"
-            value={this.state.NIC}
-            onChange={this.handleChange}
-            placeholder={NIC}
-          />
+      <div>
+        <NavBar />
+        <div className="container-1">
+          <h2>Contact</h2>
+          <form>
+            <label>NIC: </label>
+            <input
+              type="text"
+              name="NIC"
+              value={this.state.NIC}
+              onChange={this.handleChange}
+              placeholder={NIC}
+            />
 
-          <label>Date: </label>
-          <input
-            type="date"
-            name="leaveDate"
-            value={this.state.leaveDate}
-            onChange={this.handleChange}
-            placeholder={leaveDate}
-            min={new Date().toISOString().split("T")[0]}
-          />
+            <label>Date: </label>
+            <input
+              type="date"
+              name="leaveDate"
+              value={this.state.leaveDate}
+              onChange={this.handleChange}
+              placeholder={leaveDate}
+              min={new Date().toISOString().split("T")[0]}
+            />
 
-          <label>Reason: </label>
-          <input
-            type="text"
-            name="reason"
-            value={this.state.reason}
-            onChange={this.handleChange}
-            placeholder={reason}
-          />
+            <label>Reason: </label>
+            <input
+              type="text"
+              name="reason"
+              value={this.state.reason}
+              onChange={this.handleChange}
+              placeholder={reason}
+            />
 
-          <button className="btn btn-danger" type="button" style={{ marginTop: '15px' }} onClick={() => this.onDelete(_id)}>
-            <i className="fas fa-trash-alt"></i> Delete
-          </button>
-          <br />
-          <button className="btn btn-primary" type="submit" style={{ marginTop: '15px' }} onClick={this.onSubmit}>
-            <i className="fas fa-edit"></i> Edit
+            <button className="btn btn-danger" type="button" style={{ marginTop: '15px' }} onClick={() => this.onDelete(_id)}>
+              <i className="fas fa-trash-alt"></i> Delete
+            </button>
+            <br />
+            <button className="btn btn-primary" type="submit" style={{ marginTop: '15px' }} onClick={this.onSubmit}>
+              <i className="fas fa-edit"></i> Edit
 
-          </button>
-
-
-
-        </form>
+            </button>
 
 
+
+          </form>
+
+
+        </div>
       </div>
-
-
-
-
-
     )
   }
 }

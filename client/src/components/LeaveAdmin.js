@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { useParams } from "react-router-dom";
 import Swal from 'sweetalert2';
+import NavBar from './NavBar';
 
 function withParams(Component) {
   return (props) => <Component params={useParams()} />;
@@ -30,42 +31,34 @@ class LeaveAdmin extends Component {
     });
   }
 
-  // onDelete = (id) => {
-  //   if (window.confirm("Are you sure you want to delete this?")) {
-  //     axios.delete(`/leaveAdmin/post/${id}`).then((res) => {
-  //       alert("Delete Successfully");
-  //       this.retrievePosts();
-  //     });
-  //   }
-  // };
-
   onDelete = (id) => {
     Swal.fire({
-        title: 'Are you sure you want to delete this?',
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#FFB400',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes, delete it!'
+      title: 'Are you sure you want to delete this?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#FFB400',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
     }).then((result) => {
-        if (result.isConfirmed) {
-            axios.delete(`/leaveAdmin/post/${id}`).then((res) => {
-                Swal.fire(
-                    'Deleted!',
-                    'Your post has been deleted.',
-                    'success'
-                )
-                this.retrievePosts();
-            });
-        }
+      if (result.isConfirmed) {
+        axios.delete(`/leaveAdmin/post/${id}`).then((res) => {
+          Swal.fire(
+            'Deleted!',
+            'Your post has been deleted.',
+            'success'
+          )
+          this.retrievePosts();
+        });
+      }
     });
-};
+  };
 
   render() {
     const { leaves } = this.state;
-  
+
     return (
       <div>
+        <NavBar />
         <div className="mt-5">
           <div className="container">
             <a href="/EmployeeList"><button className='backBtn'>Employee List</button></a>
@@ -87,7 +80,7 @@ class LeaveAdmin extends Component {
                       <tr key={index}>
                         <th scope="row">{index + 1}</th>
                         <td>{leave.NIC}</td>
-                        <td>{leave.leaveDate.substring(0,10)}</td>
+                        <td>{leave.leaveDate.substring(0, 10)}</td>
                         <td>{leave.reason}</td>
                         <td onClick={() => this.onDelete(leave._id)}>
                           <a className="btn btn-danger">
@@ -108,7 +101,7 @@ class LeaveAdmin extends Component {
         </div>
       </div>
     );
-  } 
+  }
 }
 
 export default withParams(LeaveAdmin);

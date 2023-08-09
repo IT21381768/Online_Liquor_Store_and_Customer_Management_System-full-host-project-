@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './form.css';
 import axios from 'axios';
-
+import NavBar from './NavBar';
 
 class LoginPage extends Component {
   constructor(props) {
@@ -56,42 +56,45 @@ class LoginPage extends Component {
 
   render() {
     return (
-      <div className="container">
-        <form className="create" onSubmit={this.handleSubmit}>
-          <h3>Admin Login</h3>
+      <div>
+        <NavBar />
+        <div className="container">
+          <form className="create" onSubmit={this.handleSubmit}>
+            <h3>Admin Login</h3>
 
-          <label>Username: </label>
-          <input
-            type="text"
-            name="name"
-            value={this.state.username}
-            onChange={this.handleUsernameChange}
-            id="formGroupExampleInput"
-            required
-          />
+            <label>Username: </label>
+            <input
+              type="text"
+              name="name"
+              value={this.state.username}
+              onChange={this.handleUsernameChange}
+              id="formGroupExampleInput"
+              required
+            />
 
-          <label>Password: </label>
-          <input
-            type="password"
-            name="password"
-            value={this.state.password}
-            onChange={this.handlePasswordChange}
-            id="formGroupExampleInput"
-            required
-          />
+            <label>Password: </label>
+            <input
+              type="password"
+              name="password"
+              value={this.state.password}
+              onChange={this.handlePasswordChange}
+              id="formGroupExampleInput"
+              required
+            />
 
-          {this.state.error && (
-            <div className="alert alert-danger">{this.state.error}</div>
-          )}
+            {this.state.error && (
+              <div className="alert alert-danger">{this.state.error}</div>
+            )}
 
-          <center>
-            
-            <button className="formBtn" type="submit">
-              Login
-            </button>
-          </center>
-        </form>
-        <center><a href="/EmpLoginPage"><button className="formBtn">Login as Employee</button></a></center>
+            <center>
+
+              <button className="formBtn" type="submit">
+                Login
+              </button>
+            </center>
+          </form>
+          <center><a href="/EmpLoginPage"><button className="formBtn">Login as Employee</button></a></center>
+        </div>
       </div>
     );
   }

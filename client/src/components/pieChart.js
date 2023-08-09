@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Chart from "react-apexcharts";
+import NavBar from "./NavBar";
 
 class Piechart extends Component {
   constructor(props) {
@@ -31,37 +32,40 @@ class Piechart extends Component {
   render() {
     const { income, expense } = this.state;
     return (
-      <React.Fragment>
-        <div className="container">
-        <h3 className="mt-3">Welcome to Pie Chart </h3>
-        <a href="/adminDashboard">
-            <button className="backBtn">Dashboard </button>
-          </a>
-          <a href="/IncomeList">
-            <button className="backBtn">Income </button>
-          </a>
-          <a href="/ExpenseList">
-            <button className="backBtn">Expense </button>
-          </a>
-        </div>
-        <div className="container-fluid mb-3">
-         
-          <Chart
-            type="pie"
-            width={1349}
-            height={550}
-            series={[59, 41]}
-            options={{
-              noData: { text: "Empty Data" },
-              labels: ["Income", "Expense"],
-            }}
-          ></Chart>
-        </div>
-        
-      </React.Fragment>
+      <div>
+        <NavBar />
+        <React.Fragment>
+          <div className="container">
+            <h3 className="mt-3">Welcome to Pie Chart </h3>
+            <a href="/adminDashboard">
+              <button className="backBtn">Dashboard </button>
+            </a>
+            <a href="/IncomeList">
+              <button className="backBtn">Income </button>
+            </a>
+            <a href="/ExpenseList">
+              <button className="backBtn">Expense </button>
+            </a>
+          </div>
+          <div className="container-fluid mb-3">
+
+            <Chart
+              type="pie"
+              width={1349}
+              height={550}
+              series={[59, 41]}
+              options={{
+                noData: { text: "Empty Data" },
+                labels: ["Income", "Expense"],
+              }}
+            ></Chart>
+          </div>
+
+        </React.Fragment>
+      </div>
     );
   }
-  
+
 }
 
 export default Piechart;

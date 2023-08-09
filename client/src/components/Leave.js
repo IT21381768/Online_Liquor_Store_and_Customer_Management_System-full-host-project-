@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import axios from 'axios';
 import "./leave.css"
 import "./contact.css"
+import NavBar from './NavBar';
 
 export default class Leave extends Component {
 
@@ -18,7 +19,7 @@ export default class Leave extends Component {
 
 
     handleChange = (e) => {
-        
+
         const { name, value } = e.target;
 
         this.setState({
@@ -61,54 +62,53 @@ export default class Leave extends Component {
 
     render() {
         return (
-            <div className='container'>
-            <div class="createLeave">
+            <div>
+                <NavBar />
+                <div className='container'>
+                    <div class="createLeave">
 
-                <h3>Add Leave Request</h3>
-                <form>
-
-
-                    {/* <label>NIC: </label> */}
-                    <input
-                        type="text"
-                        name="NIC"
-                        value={this.state.NIC}
-                        onChange={this.handleChange}
-                        required
-                        minLength="10"
-                        placeholder={this.props.loggedInNIC}
-                        readOnly
-                        style={{ display: 'none' }}
-                    />
+                        <h3>Add Leave Request</h3>
+                        <form>
 
 
-                    <label>Date: </label>
-                    <input
-                        type="date"
-                        name="leaveDate"
-                        value={this.state.leaveDate}
-                        onChange={this.handleChange}
-                        min={new Date().toISOString().split("T")[0]}
-                        required
-                    />
+                            {/* <label>NIC: </label> */}
+                            <input
+                                type="text"
+                                name="NIC"
+                                value={this.state.NIC}
+                                onChange={this.handleChange}
+                                required
+                                minLength="10"
+                                placeholder={this.props.loggedInNIC}
+                                readOnly
+                                style={{ display: 'none' }}
+                            />
 
 
-                    <label>Reason: </label>
-                    <input
-                        type="text"
-                        name="reason"
-                        value={this.state.reason}
-                        onChange={this.handleChange}
-                        required
-                    />
-                    <center><button className="formBtn" type="submit" onClick={this.onSubmit}>
-                        Submit</button><br /></center>
+                            <label>Date: </label>
+                            <input
+                                type="date"
+                                name="leaveDate"
+                                value={this.state.leaveDate}
+                                onChange={this.handleChange}
+                                min={new Date().toISOString().split("T")[0]}
+                                required
+                            />
 
 
-
-
-                </form>
-            </div>
+                            <label>Reason: </label>
+                            <input
+                                type="text"
+                                name="reason"
+                                value={this.state.reason}
+                                onChange={this.handleChange}
+                                required
+                            />
+                            <center><button className="formBtn" type="submit" onClick={this.onSubmit}>
+                                Submit</button><br /></center>
+                        </form>
+                    </div>
+                </div>
             </div>
         )
     }

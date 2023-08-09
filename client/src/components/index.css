@@ -1,12 +1,12 @@
 /* import url font size and style */
 
 body {
-  margin: 0; 
+  margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale; 
+  -moz-osx-font-smoothing: grayscale;
   font-size: 21px;
 }
 
@@ -15,55 +15,56 @@ code {
     monospace;
 }
 
-h1{
+h1 {
   font-family: 'Roboto', sans-serif;
   text-decoration: black;
-  font-size:20px !important;
-  text-align:left !important;
+  font-size: 20px !important;
+  text-align: left !important;
 }
 
 /* .img-fluid{
   height:200px !important;
 }  */
 
-.bigimg{
-  height:300px !important;
+.bigimg {
+  height: 300px !important;
 }
 
-.flex-container{
+.flex-container {
   display: flex !important;
 }
 
- /*.btn{
+/*.btn{
   background-color: #FFB400 !important;
   color: white !important;
   border: none !important;
   margin-left: 3px;
 } */
 
-.table{
+.table {
   margin-top: 20px;
   text-align: center;
   text-indent: 5px;
-  
+
 
 }
 
 
-select{
+select {
   box-shadow: none !important;
   border-color: black;
 
 }
+
 /* 
 p{
   text-align: left !important;
 } */
 
-.navbar{
-  background-color: #FFB400!important;
+.navbar {
+  background-color: #FFB400 !important;
 }
 
-.nav-link{
+.nav-link {
   color: black !important;
 }

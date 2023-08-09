@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from 'axios';
 import "./delivery.css"
+import NavBar from './NavBar';
 
 export default class InformationForm extends Component {
 
@@ -67,48 +68,7 @@ export default class InformationForm extends Component {
     render() {
         return (
             <div >
-                {/* <section id="about" class="about section-padding">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-4 col-md-12 col-12">
-                                <div class="about-img">
-                                    <img src="https://images.pexels.com/photos/1374552/pexels-photo-1374552.jpeg?auto=compress&cs=tinysrgb&w=600" alt="" class="img-fluid" />
-                                </div>
-                            </div>
-                            
-                                
-                                    <div className="col-md-6">
-                                        <div className="card mb-4">
-                                            <div className="card-header py-3">
-                                                <h5 className="mb-0">Summary</h5>
-                                            </div>
-                                            <div className="card-body">
-                                                <ul className="list-group list-group-flush">
-                                                    <li className="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
-                                                        Total Quantity
-                                                        <span>5</span>
-                                                    </li>
-
-                                                    <li className="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
-                                                        <div>
-                                                            <strong>Total amount</strong>
-                                                        </div>
-                                                        <span>
-                                                            <strong>67000</strong>
-                                                        </span>
-                                                    </li>
-                                                </ul>
-
-                                               
-                                            </div>
-                                        </div>
-                                    </div>
-                                    </div>
-                    </div>
-                </section> */}
-
-
-
+                <NavBar />
                 <div class="head-title">
                     <h1>Please enter your details below</h1>
                 </div>
@@ -177,7 +137,7 @@ export default class InformationForm extends Component {
                         <div className="form-group">
                             <p for="exampleFormControlTextarea1" class="form-label">Phone</p>
                             <input
-                            type="tel"
+                                type="tel"
                                 className="form-control"
                                 id="phone"
                                 name="phone"
